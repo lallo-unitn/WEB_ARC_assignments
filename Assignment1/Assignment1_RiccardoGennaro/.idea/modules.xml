@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Assignment1_RIccardoGennaro.iml" filepath="$PROJECT_DIR$/.idea/Assignment1_RIccardoGennaro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ModifiedServer/ModifiedServer.iml" filepath="$PROJECT_DIR$/ModifiedServer/ModifiedServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Reverse/Reverse.iml" filepath="$PROJECT_DIR$/Reverse/Reverse.iml" />
+    </modules>
+  </component>
+</project>
