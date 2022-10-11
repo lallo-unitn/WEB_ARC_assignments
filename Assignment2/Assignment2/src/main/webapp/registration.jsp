@@ -1,40 +1,35 @@
 <%--
   Created by IntelliJ IDEA.
   User: ricca
-  Date: 19/06/2022
-  Time: 11:29
+  Date: 11/10/2022
+  Time: 12:34
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Login</title>
+    <title>Registration</title>
 </head>
 <body>
-<div>
-    <form action="AuthServlet" method="POST">
+    <form action="AddUserServlet" method="POST">
         username: <label for="username"></label>
-            <input type="text"
+        <input type="text"
                name="username"
                id="username"
                required="required">
         <br>
         password: <label for="password"></label>
-            <input type="password"
+        <input type="password"
                name="password"
                id="password"
                required="required">
         <br>
-        <input type="submit" value="Login">
-        <input type="hidden" value="<%= request.getAttribute("destination")%>">
-
-        <%String message = (String) request.getAttribute("message");
-            if(message != null){%>
+        <input type="password"
+               name="repeatPws"
+               id="repeatPws"
+               required="required">
         <br>
-        <%= message%>
-        <%}%>
+        <input type="submit" value="Login">
     </form>
-    <a href="RegistrationServlet">Click here to register</a>
-</div>
 </body>
 </html>

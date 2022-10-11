@@ -14,12 +14,10 @@ public class UserBean implements Serializable {
 
     @Override
     public boolean equals(Object o){
-        //System.out.println(this.username);
-        //System.out.println( ((UserBean) o).getUsername() );
         if(
-                o instanceof UserBean &&
-                        (this.username).equals( ((UserBean) o).getUsername() ) &&
-                        (this.password).equals( ((UserBean) o).getPassword() )
+            o instanceof UserBean &&
+            (this.username).equals( ((UserBean) o).getUsername() ) &&
+            (this.password).equals( ((UserBean) o).getPassword() )
         ){
             return true;
         }
