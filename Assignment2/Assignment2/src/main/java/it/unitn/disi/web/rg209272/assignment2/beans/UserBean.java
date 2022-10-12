@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class UserBean implements Serializable {
     private String username = null;
     private String password = null;
+    private int score;
 
     public UserBean(){}
     public UserBean(String username, String password){
@@ -37,11 +38,18 @@ public class UserBean implements Serializable {
         return this.password;
     }
 
+    public int getScore(){
+        return this.score;
+    }
+
     public void setUsername(String username){
         this.username = username;
     }
 
     public void setPassword(String password){
         this.password = password;
+    }
+    public void setScore(int score){
+        this.score = score;
     }
 }

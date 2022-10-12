@@ -1,5 +1,7 @@
 package it.unitn.disi.web.rg209272.assignment2.auxiliary;
 
+import it.unitn.disi.web.rg209272.assignment2.beans.UserBean;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -23,9 +25,10 @@ public class AuthFilter implements Filter {
         if(query != null && !query.equals("null"))
             destination = path + "?" + query;
         httpRequest.setAttribute("destination", destination);
-        String username = (String) session.getAttribute("username");
+        UserBean ub = (UserBean) session.getAttribute("userBean");
         RequestDispatcher rd;
-        if(username != null && !username.equals("null")){
+        if(ub != null && ub.getUsername() != null && !ub.getUsername().equals("null")){
+            System.out.println("AUTHFILTER: " + ub.getUsername());
             System.out.println("AUTHFILTER: " + destination);
             rd = httpRequest.getRequestDispatcher(destination);
         }else {

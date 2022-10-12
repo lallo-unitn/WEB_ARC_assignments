@@ -13,14 +13,16 @@
 <body>
 <div>
     <form action="AuthServlet" method="POST">
-        username: <label for="username"></label>
+        <label for="username"></label>
             <input type="text"
+               placeholder="Username"
                name="username"
                id="username"
                required="required">
         <br>
-        password: <label for="password"></label>
+        <label for="password"></label>
             <input type="password"
+               placeholder="Password"
                name="password"
                id="password"
                required="required">

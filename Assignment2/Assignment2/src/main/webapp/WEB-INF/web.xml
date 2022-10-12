@@ -6,6 +6,9 @@
     <welcome-file-list>
         <welcome-file>HomeServlet</welcome-file>
     </welcome-file-list>
+    <session-config>
+        <session-timeout>60</session-timeout>
+    </session-config>
     <filter>
         <filter-name>AuthFilter</filter-name>
         <filter-class>it.unitn.disi.web.rg209272.assignment2.auxiliary.AuthFilter</filter-class>
@@ -13,6 +16,9 @@
     <filter-mapping>
         <filter-name>AuthFilter</filter-name>
         <url-pattern>/HomeServlet</url-pattern>
+        <url-pattern>/GameServlet</url-pattern>
+        <url-pattern>/AddUserServlet</url-pattern>
+        <url-pattern>/private/*</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
@@ -34,6 +40,14 @@
         <servlet-name>AddUserServlet</servlet-name>
         <servlet-class>it.unitn.disi.web.rg209272.assignment2.servlets.AddUserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GameServlet</servlet-name>
+        <servlet-class>it.unitn.disi.web.rg209272.assignment2.servlets.GameServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckAnswersServlet</servlet-name>
+        <servlet-class>it.unitn.disi.web.rg209272.assignment2.servlets.CheckAnswersServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -53,5 +67,13 @@
     <servlet-mapping>
         <servlet-name>AddUserServlet</servlet-name>
         <url-pattern>/AddUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GameServlet</servlet-name>
+        <url-pattern>/GameServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckAnswersServlet</servlet-name>
+        <url-pattern>/CheckAnswersServlet</url-pattern>
     </servlet-mapping>
 </web-app>

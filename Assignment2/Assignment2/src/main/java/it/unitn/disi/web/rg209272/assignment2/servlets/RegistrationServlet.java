@@ -1,12 +1,8 @@
 package it.unitn.disi.web.rg209272.assignment2.servlets;
 
-import it.unitn.disi.web.rg209272.assignment2.beans.UserBean;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 
 public class RegistrationServlet extends HttpServlet {
     @Override
@@ -17,7 +13,7 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("HomeServlet");
+        RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");
         rd.forward(request, response);
     }
 }

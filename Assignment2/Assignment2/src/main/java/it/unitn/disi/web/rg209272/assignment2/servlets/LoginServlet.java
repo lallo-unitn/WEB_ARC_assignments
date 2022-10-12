@@ -5,10 +5,10 @@ import it.unitn.disi.web.rg209272.assignment2.auxiliary.Initializer;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
@@ -16,8 +16,9 @@ public class LoginServlet extends HttpServlet {
     @Override
     public void init(){
         ServletContext ctx = getServletContext();
-        if(ctx.getAttribute("users") == null){
-            new Initializer(ctx);
+        File flagsFile = new File(this.getServletContext().getRealPath("flags/"));
+        if(ctx.getAttribute("users") == null || ctx.getAttribute("flagsArray") == null){
+            new Initializer(ctx, flagsFile);
         }
     }
 

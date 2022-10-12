@@ -12,22 +12,26 @@
 </head>
 <body>
     <form action="AddUserServlet" method="POST">
-        username: <label for="username"></label>
+        <label for="username"></label>
         <input type="text"
+               placeholder="Username"
                name="username"
                id="username"
                required="required">
         <br>
-        password: <label for="password"></label>
+        <label for="password"></label>
         <input type="password"
+               placeholder="Password"
                name="password"
                id="password"
                required="required">
         <br>
+        <label for="repeatPsw"></label>
         <input type="password"
-               name="repeatPws"
-               id="repeatPws"
-               required="required">
+              placeholder="Repeat password"
+              name="repeatPsw"
+              id="repeatPsw"
+              required="required">
         <br>
         <input type="submit" value="Login">
     </form>

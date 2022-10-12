@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.List;
 
 public class AuthServlet extends HttpServlet {
@@ -31,15 +30,15 @@ public class AuthServlet extends HttpServlet {
             destination = "HomeServlet";
         }
         RequestDispatcher rd = request.getRequestDispatcher("LoginServlet");
-        if ( checkCredentials(username, password, ctx) ){
+        UserBean ub = new UserBean(username, password);
+        if ( checkCredentials(username, password, ctx, ub) ){
             rd = request.getRequestDispatcher(destination);
-            session.setAttribute("username", username);
+            session.setAttribute("userBean", ub);
         }
         rd.forward(request, response);
     }
 
-    private boolean checkCredentials(String username, String password, ServletContext ctx) {
-        UserBean ub = new UserBean(username, password);
+    private boolean checkCredentials(String username, String password, ServletContext ctx, UserBean ub) {
         List<UserBean> userList = (List<UserBean>) ctx.getAttribute("users");
         return userList.contains(ub);
     }
