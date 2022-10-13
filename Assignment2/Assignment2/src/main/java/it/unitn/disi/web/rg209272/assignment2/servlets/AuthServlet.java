@@ -31,7 +31,7 @@ public class AuthServlet extends HttpServlet {
         }
         RequestDispatcher rd = request.getRequestDispatcher("LoginServlet");
         UserBean ub = new UserBean(username, password);
-        if ( checkCredentials(username, password, ctx, ub) ){
+        if ( checkCredentials(ctx, ub) ){
             rd = request.getRequestDispatcher(destination);
             session.setAttribute("userBean", ub);
             if(ub.getUsername().equals("admin")){
@@ -41,7 +41,7 @@ public class AuthServlet extends HttpServlet {
         rd.forward(request, response);
     }
 
-    private boolean checkCredentials(String username, String password, ServletContext ctx, UserBean ub) {
+    private boolean checkCredentials(ServletContext ctx, UserBean ub) {
         HashMap<String, UserBean> usersMap = (HashMap<String, UserBean>) ctx.getAttribute("users");
         return usersMap.containsValue(ub);
     }
