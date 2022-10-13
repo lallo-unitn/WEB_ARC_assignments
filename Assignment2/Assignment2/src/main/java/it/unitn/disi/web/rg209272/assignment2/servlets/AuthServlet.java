@@ -34,6 +34,9 @@ public class AuthServlet extends HttpServlet {
         if ( checkCredentials(username, password, ctx, ub) ){
             rd = request.getRequestDispatcher(destination);
             session.setAttribute("userBean", ub);
+            if(ub.getUsername().equals("admin")){
+                rd = request.getRequestDispatcher("ControlServlet");
+            }
         }
         rd.forward(request, response);
     }

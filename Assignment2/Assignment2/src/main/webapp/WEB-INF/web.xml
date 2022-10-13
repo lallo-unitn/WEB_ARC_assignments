@@ -3,6 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <listener>
+        <listener-class>it.unitn.disi.web.rg209272.assignment2.auxiliary.ActiveUsersListener</listener-class>
+    </listener>
     <welcome-file-list>
         <welcome-file>HomeServlet</welcome-file>
     </welcome-file-list>
@@ -49,6 +52,10 @@
         <servlet-name>CheckAnswersServlet</servlet-name>
         <servlet-class>it.unitn.disi.web.rg209272.assignment2.servlets.CheckAnswersServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControlServlet</servlet-name>
+        <servlet-class>it.unitn.disi.web.rg209272.assignment2.servlets.ControlServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -76,5 +83,9 @@
     <servlet-mapping>
         <servlet-name>CheckAnswersServlet</servlet-name>
         <url-pattern>/CheckAnswersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlServlet</servlet-name>
+        <url-pattern>/ControlServlet</url-pattern>
     </servlet-mapping>
 </web-app>

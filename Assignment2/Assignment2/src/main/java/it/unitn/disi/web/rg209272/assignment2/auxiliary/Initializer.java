@@ -13,10 +13,14 @@ public class Initializer {
         HashMap<String, UserBean> usersMap = new HashMap<>();
         String[] userdata = {
                 "admin",
-                "admin"
+                "nimda"
         };
         usersMap.put(userdata[0], new UserBean(userdata[0], userdata[1]));
         ctx.setAttribute("users", usersMap);
+
+        //INIT ACTIVE USERS
+        HashMap<String, UserBean> activeUsers = new HashMap<>();
+        ctx.setAttribute("activeUsers", activeUsers);
 
         //SETTING GAME FLAGS
         ArrayList<String> flagsArray = new ArrayList();

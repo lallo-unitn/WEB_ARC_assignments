@@ -25,7 +25,7 @@ public class CheckAnswersServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Parsing answer
         Integer[] ans = new Integer[3];
-        RequestDispatcher rd = request.getRequestDispatcher("GameServlet");
+        RequestDispatcher rd = request.getRequestDispatcher("HomeServlet");
         try{
             for (int i = 0; i < 3; i++) {
                 ans[i] = Integer.parseInt(request.getParameter("flag" + (i + 1) + "Ans"));
