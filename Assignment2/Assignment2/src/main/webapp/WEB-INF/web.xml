@@ -18,6 +18,7 @@
         <url-pattern>/HomeServlet</url-pattern>
         <url-pattern>/GameServlet</url-pattern>
         <url-pattern>/AddUserServlet</url-pattern>
+        <url-pattern>/CheckAnswersServlet</url-pattern>
         <url-pattern>/private/*</url-pattern>
     </filter-mapping>
     <servlet>

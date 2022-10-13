@@ -15,9 +15,9 @@
              type="it.unitn.disi.web.rg209272.assignment2.beans.UserBean"
              scope="session"/>
 <jsp:include page="header.jsp"/>
-Score: <%= userBean.getScore()%>
+Score: <%=userBean.getScore()%>
 <form action="GameServlet" method="GET">
-    <input type="submit" value="Login">
+    <input type="submit" value="Play">
 </form>
 </body>
 </html>

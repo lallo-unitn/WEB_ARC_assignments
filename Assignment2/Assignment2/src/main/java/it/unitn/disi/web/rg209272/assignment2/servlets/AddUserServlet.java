@@ -2,10 +2,14 @@ package it.unitn.disi.web.rg209272.assignment2.servlets;
 
 import it.unitn.disi.web.rg209272.assignment2.beans.UserBean;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.LinkedList;
+import java.util.HashMap;
 
 public class AddUserServlet extends HttpServlet {
     @Override
@@ -28,10 +32,11 @@ public class AddUserServlet extends HttpServlet {
             rd.forward(request, response);
             return;
         }
-        LinkedList<UserBean> userBeanLinkedList = (LinkedList<UserBean>) ctx.getAttribute("users");
+        HashMap<String, UserBean> usersMap = (HashMap<String, UserBean>) ctx.getAttribute("users");
         UserBean ub = new UserBean(username, password);
-        if(!userBeanLinkedList.contains(ub)){
-            userBeanLinkedList.add(ub);
+        if(!usersMap.containsKey(username)){
+            usersMap.put(username, ub);
+            ctx.setAttribute("users", usersMap);
         }else{
             rd = request.getRequestDispatcher("RegistrationServlet");
             request.setAttribute("message", "User already exists");
