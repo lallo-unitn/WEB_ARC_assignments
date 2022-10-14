@@ -111,7 +111,7 @@ _book
 # eBook build output
 *.epub
 *.mobi
-*.pdf
+# *.pdf
 *.class
 
 # Package Files #
