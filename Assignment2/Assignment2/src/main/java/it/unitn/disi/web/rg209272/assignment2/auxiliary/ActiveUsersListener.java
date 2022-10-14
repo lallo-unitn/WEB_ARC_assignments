@@ -9,7 +9,8 @@ import java.util.LinkedList;
 
 public class ActiveUsersListener implements ServletContextListener, HttpSessionListener, HttpSessionAttributeListener {
 
-    public ActiveUsersListener() {}
+    public ActiveUsersListener() {
+    }
 
     @Override
     public void attributeAdded(HttpSessionBindingEvent sbe) {
@@ -22,13 +23,13 @@ public class ActiveUsersListener implements ServletContextListener, HttpSessionL
     }
 
     @Override
+    public void sessionDestroyed(HttpSessionEvent se) {
+        removeActiveUser(se);
+    }
+
+    @Override
     public void attributeRemoved(HttpSessionBindingEvent sbe) {
-        ServletContext ctx = sbe.getSession().getServletContext();
-        HttpSession session = sbe.getSession();
-        HashMap<String, UserBean> activeUsers = (HashMap<String, UserBean>) ctx.getAttribute("activeUsers");
-        UserBean ub = (UserBean) session.getAttribute("userBean");
-        activeUsers.remove(ub.getUsername(), ub);
-        ctx.setAttribute("activeUsers", activeUsers);
+        removeActiveUser(sbe);
     }
 
     @Override
@@ -39,5 +40,14 @@ public class ActiveUsersListener implements ServletContextListener, HttpSessionL
         UserBean ub = (UserBean) session.getAttribute("userBean");
         activeUsers.replace(ub.getUsername(), ub);
         ctx.setAttribute("activeUsers", activeUsers);
+    }
+    private void removeActiveUser(HttpSessionEvent se) {
+        ServletContext ctx = se.getSession().getServletContext();
+        HttpSession session = se.getSession();
+        HashMap<String, UserBean> activeUsers = (HashMap<String, UserBean>) ctx.getAttribute("activeUsers");
+        UserBean ub = (UserBean) session.getAttribute("userBean");
+        activeUsers.remove(ub.getUsername(), ub);
+        ctx.setAttribute("activeUsers", activeUsers);
+        System.out.println("SESSIONLISTENER: " + ub.getUsername() + "removed from active users");
     }
 }

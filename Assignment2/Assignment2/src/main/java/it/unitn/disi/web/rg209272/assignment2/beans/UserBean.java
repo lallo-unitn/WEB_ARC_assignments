@@ -7,49 +7,52 @@ public class UserBean implements Serializable {
     private String password = null;
     private int score;
 
-    public UserBean(){}
-    public UserBean(String username, String password){
+    public UserBean() {
+    }
+
+    public UserBean(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
     @Override
-    public boolean equals(Object o){
-        if(
-            o instanceof UserBean &&
-            (this.username).equals( ((UserBean) o).getUsername() ) &&
-            (this.password).equals( ((UserBean) o).getPassword() )
-        ){
+    public boolean equals(Object o) {
+        if (
+                o instanceof UserBean &&
+                        (this.username).equals(((UserBean) o).getUsername()) &&
+                        (this.password).equals(((UserBean) o).getPassword())
+        ) {
             return true;
         }
         return false;
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return this.username.hashCode() + this.password.hashCode();
     }
 
-    public String getUsername(){
+    public String getUsername() {
         return this.username;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return this.password;
     }
 
-    public int getScore(){
+    public int getScore() {
         return this.score;
     }
 
-    public void setUsername(String username){
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public void setPassword(String password){
+    public void setPassword(String password) {
         this.password = password;
     }
-    public void setScore(int score){
+
+    public void setScore(int score) {
         this.score = score;
     }
 }

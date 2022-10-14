@@ -19,10 +19,12 @@
              type="java.util.HashMap"
              scope="application"/>
 <ol>
-<% for (String key :
+        <% for (String key :
             ( (HashMap<String, UserBean>)activeUsers ).keySet() ){
         UserBean ub = (UserBean)activeUsers.get(key);%>
-    <li>Username: <%=ub.getUsername()%> Score: <%=ub.getScore()%></li>
-<%}%>
+    <li>
+        Username: <%=ub.getUsername()%> Score: <%=ub.getScore()%>
+    </li>
+        <%}%>
 </body>
 </html>

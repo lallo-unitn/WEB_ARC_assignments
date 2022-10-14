@@ -22,16 +22,16 @@ public class AuthFilter implements Filter {
         String path = httpRequest.getServletPath();
         String query = httpRequest.getQueryString();
         String destination = path;
-        if(query != null && !query.equals("null"))
+        if (query != null && !query.equals("null"))
             destination = path + "?" + query;
         httpRequest.setAttribute("destination", destination);
         UserBean ub = (UserBean) session.getAttribute("userBean");
         RequestDispatcher rd;
-        if(ub != null && ub.getUsername() != null && !ub.getUsername().equals("null")){
+        if (ub != null && ub.getUsername() != null && !ub.getUsername().equals("null")) {
             System.out.println("AUTHFILTER: " + ub.getUsername());
             System.out.println("AUTHFILTER: " + destination);
             rd = httpRequest.getRequestDispatcher(destination);
-        }else {
+        } else {
             System.out.println("AUTHFILTER: " + "not auth");
             rd = httpRequest.getRequestDispatcher("LoginServlet");
         }

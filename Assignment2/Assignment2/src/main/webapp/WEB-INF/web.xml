@@ -10,7 +10,7 @@
         <welcome-file>HomeServlet</welcome-file>
     </welcome-file-list>
     <session-config>
-        <session-timeout>60</session-timeout>
+        <session-timeout>1</session-timeout>
     </session-config>
     <filter>
         <filter-name>AuthFilter</filter-name>
@@ -20,8 +20,8 @@
         <filter-name>AuthFilter</filter-name>
         <url-pattern>/HomeServlet</url-pattern>
         <url-pattern>/GameServlet</url-pattern>
-        <url-pattern>/AddUserServlet</url-pattern>
         <url-pattern>/CheckAnswersServlet</url-pattern>
+        <url-pattern>/ControlServlet</url-pattern>
         <url-pattern>/private/*</url-pattern>
     </filter-mapping>
     <servlet>

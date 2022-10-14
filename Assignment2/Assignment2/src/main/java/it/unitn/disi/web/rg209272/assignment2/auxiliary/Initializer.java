@@ -26,12 +26,12 @@ public class Initializer {
         ArrayList<String> flagsArray = new ArrayList();
         String[] flagsList = flagsFile.list();
         try {
-            for(String name:flagsList){
+            for (String name : flagsList) {
                 System.out.println(name);
                 flagsArray.add(name);
             }
             ctx.setAttribute("flagsArray", flagsArray);
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }

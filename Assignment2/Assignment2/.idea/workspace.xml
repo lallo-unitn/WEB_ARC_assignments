@@ -11,9 +11,22 @@
   <component name="ChangeListManager">
     <list default="true" id="c495e132-5a15-4aca-9044-66e0cb8c271a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/auxiliary/ActiveUsersListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/auxiliary/ActiveUsersListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/auxiliary/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/auxiliary/AuthFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/auxiliary/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/auxiliary/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/beans/UserBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/beans/UserBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/AddUserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/AddUserServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/AuthServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/AuthServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/CheckAnswersServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/CheckAnswersServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/ControlServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/ControlServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/GameServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/GameServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/HomeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/HomeServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/private/controlPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/private/controlPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/private/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/private/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/registration.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +46,8 @@
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
+    <option name="FILTER_INFO" value="false" />
+    <option name="FILTER_DEBUG" value="false" />
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -51,6 +64,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
     "last_opened_file_path": "C:/Users/ricca/OneDrive/7° semestre/WEB ARC/Assignment2/Assignment2/src/main/webapp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -119,7 +133,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665673824368</updated>
-      <workItem from="1665673826005" duration="8514000" />
+      <workItem from="1665673826005" duration="8632000" />
+      <workItem from="1665689342351" duration="245000" />
+      <workItem from="1665731641646" duration="5733000" />
     </task>
     <servers />
   </component>

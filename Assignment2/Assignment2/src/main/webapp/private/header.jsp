@@ -2,5 +2,5 @@
              type="it.unitn.disi.web.rg209272.assignment2.beans.UserBean"
              scope="session"/>
 <h1 style="background-color: aqua; font-family: 'Comic Sans MS', serif">
-  <%=userBean.getUsername()%>
+    <%=userBean.getUsername()%>
 </h1>

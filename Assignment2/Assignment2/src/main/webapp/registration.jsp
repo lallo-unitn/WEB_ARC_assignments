@@ -11,29 +11,26 @@
     <title>Registration</title>
 </head>
 <body>
-    <form action="AddUserServlet" method="POST">
-        <label for="username"></label>
-        <input type="text"
-               placeholder="Username"
-               name="username"
-               id="username"
-               required="required">
-        <br>
-        <label for="password"></label>
-        <input type="password"
-               placeholder="Password"
-               name="password"
-               id="password"
-               required="required">
-        <br>
-        <label for="repeatPsw"></label>
-        <input type="password"
-              placeholder="Repeat password"
-              name="repeatPsw"
-              id="repeatPsw"
-              required="required">
-        <br>
-        <input type="submit" value="Login">
-    </form>
+<form action="AddUserServlet" method="POST">
+    <label for="username"></label>
+    <input type="text"
+           placeholder="Username"
+           name="username"
+           id="username"
+           required="required">
+    <label for="password"></label>
+    <input type="password"
+           placeholder="Password"
+           name="password"
+           id="password"
+           required="required">
+    <label for="repeatPsw"></label>
+    <input type="password"
+           placeholder="Repeat password"
+           name="repeatPsw"
+           id="repeatPsw"
+           required="required">
+    <input type="submit" value="Submit">
+</form>
 </body>
 </html>

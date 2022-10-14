@@ -26,15 +26,15 @@ public class AuthServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String destination = (String) request.getAttribute("destination");
-        if( destination == null ){
+        if (destination == null) {
             destination = "HomeServlet";
         }
         RequestDispatcher rd = request.getRequestDispatcher("LoginServlet");
         UserBean ub = new UserBean(username, password);
-        if ( checkCredentials(ctx, ub) ){
+        if (checkCredentials(ctx, ub)) {
             rd = request.getRequestDispatcher(destination);
             session.setAttribute("userBean", ub);
-            if(ub.getUsername().equals("admin")){
+            if (ub.getUsername().equals("admin")) {
                 rd = request.getRequestDispatcher("ControlServlet");
             }
         }
@@ -43,6 +43,11 @@ public class AuthServlet extends HttpServlet {
 
     private boolean checkCredentials(ServletContext ctx, UserBean ub) {
         HashMap<String, UserBean> usersMap = (HashMap<String, UserBean>) ctx.getAttribute("users");
+        for (String key:
+             usersMap.keySet()) {
+            UserBean userBean = usersMap.get(key);
+            System.out.println(userBean.getUsername() + " / " + userBean.getPassword());
+        }
         return usersMap.containsValue(ub);
     }
 }

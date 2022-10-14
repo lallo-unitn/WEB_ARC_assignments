@@ -13,8 +13,8 @@ public class ControlServlet extends HttpServlet {
         ServletContext ctx = getServletContext();
         HashMap<String, UserBean> activeUsers = (HashMap<String, UserBean>) ctx.getAttribute("activeUsers");
         for (String key :
-                ( (HashMap<String, UserBean>)activeUsers ).keySet() ){
-            UserBean ub = (UserBean)activeUsers.get(key);
+                ((HashMap<String, UserBean>) activeUsers).keySet()) {
+            UserBean ub = (UserBean) activeUsers.get(key);
             System.out.println(ub.getUsername() + ub.getScore());
         }
         RequestDispatcher rd = request.getRequestDispatcher("private/controlPage.jsp");

@@ -19,19 +19,25 @@ public class GameServlet extends HttpServlet {
         ArrayList<String> flagsArray = (ArrayList<String>) ctx.getAttribute("flagsArray");
         String flagPath = "flags/";
         Random random = new Random(System.currentTimeMillis());
-        int randomIndex = 0;
-        Integer[] chosenFlagsIndex = new Integer[3];
+        int randomIndex;
+        ArrayList<Integer> chosenFlagsIndex = new ArrayList<>(3);
         System.out.println("GAMESERVLET: ");
-        for (int i = 1; i <= 3 ; i++) {
-            randomIndex = random.nextInt(flagsArray.size());
-            request.setAttribute( "flag" + i, flagPath + flagsArray.get(randomIndex) );
-            chosenFlagsIndex[i-1] = randomIndex;
-            System.out.println("chosen index: " + chosenFlagsIndex[i-1]);
+        for (int i = 1; i <= 3; i++) {
+            //DROP ALREADY CHOSEN FLAGS INDEXES
+            do {
+                randomIndex = random.nextInt(flagsArray.size());
+            } while (chosenFlagsIndex.contains(randomIndex));
+            //SET FLAGS IN REQUEST
+            request.setAttribute("flag" + i, flagPath + flagsArray.get(randomIndex));
+            chosenFlagsIndex.add(randomIndex, i - 1);
+            System.out.println("chosen index: " + chosenFlagsIndex.get(i - 1));
         }
+        //SET FLAGS IN SESSION
         session.setAttribute("chosenFlagsIndex", chosenFlagsIndex);
         RequestDispatcher rd = request.getRequestDispatcher("private/game.jsp");
         rd.forward(request, response);
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
