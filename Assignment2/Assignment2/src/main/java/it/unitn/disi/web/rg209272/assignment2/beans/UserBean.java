@@ -55,4 +55,10 @@ public class UserBean implements Serializable {
     public void setScore(int score) {
         this.score = score;
     }
+
+    @Override
+    public String toString() {
+        return "username=" + username +
+                ", password=" + password + '\n';
+    }
 }

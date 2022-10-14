@@ -16,9 +16,13 @@ public class LoginServlet extends HttpServlet {
     @Override
     public void init() {
         ServletContext ctx = getServletContext();
-        File flagsFile = new File(this.getServletContext().getRealPath("flags/"));
-        if (ctx.getAttribute("users") == null || ctx.getAttribute("flagsArray") == null) {
-            new Initializer(ctx, flagsFile);
+        try {
+            File flagsFile = new File(this.getServletContext().getRealPath("flags/"));
+            if (ctx.getAttribute("users") == null || ctx.getAttribute("flagsArray") == null) {
+                new Initializer(ctx, flagsFile);
+            }
+        } catch (NullPointerException e) {
+            System.out.println("LOGINSERVLET*init(): File not found");
         }
     }
 

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class HomeServlet extends HttpServlet {
@@ -16,9 +17,13 @@ public class HomeServlet extends HttpServlet {
     @Override
     public void init() {
         ServletContext ctx = getServletContext();
-        File flagsFile = new File(this.getServletContext().getRealPath("flags/"));
-        if (ctx.getAttribute("users") == null || ctx.getAttribute("flagsArray") == null) {
-            new Initializer(ctx, flagsFile);
+        try {
+            File flagsFile = new File(this.getServletContext().getRealPath("flags/"));
+            if (ctx.getAttribute("users") == null || ctx.getAttribute("flagsArray") == null) {
+                new Initializer(ctx, flagsFile);
+            }
+        } catch (NullPointerException e) {
+            System.out.println("HOMESERVLET*init(): File not found");
         }
     }
 
