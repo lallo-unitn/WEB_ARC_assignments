@@ -1,2 +1,2 @@
 # WEB_ARC_assignments
-A repo containing the web arch. [2022/23] assignments. This codes are not indented to be used in a real life scenario since they suffer from HEAVY security and design issues. This codes are to be used for teaching purposes only.
+A repo containing the web arch. [2022/23] assignments. This code is not indented to be used in a real life scenario since it suffer from HEAVY security and design issues. This code is to be used for teaching purposes only.
