@@ -32,5 +32,12 @@
            required="required">
     <input type="submit" value="Submit">
 </form>
+<%
+    String message = (String) request.getAttribute("message");
+    if (message != null) {
+%>
+<br>
+<%= message%>
+<%}%>
 </body>
 </html>

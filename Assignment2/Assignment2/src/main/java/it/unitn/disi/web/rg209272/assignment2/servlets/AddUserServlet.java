@@ -40,13 +40,12 @@ public class AddUserServlet extends HttpServlet {
             ctx.setAttribute("users", usersMap);
             System.out.println("ADDUSER: User ADDED");
             addUserToTxt(ub);
+            rd = request.getRequestDispatcher("LoginServlet");
         } else {
             rd = request.getRequestDispatcher("RegistrationServlet");
             request.setAttribute("message", "User already exists");
             System.out.println("ADDUSER: User AE");
         }
-
-        rd = request.getRequestDispatcher("LoginServlet");
         rd.forward(request, response);
     }
 

@@ -9,6 +9,12 @@
 <html>
 <head>
     <title>Let's Play!</title>
+    <style>
+        .large {
+            display: block;
+            margin-bottom: 1em;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -31,18 +37,19 @@
            required="required"
            id="flag1Ans"
            name="flag1Ans">
-    <br>
+    <span class="large"></span>
     <img src="<%= request.getAttribute("flag2")%>">
     <input type="number"
            required="required"
            id="flag2Ans"
            name="flag2Ans">
-    <br>
+    <span class="large"></span>
     <img src="<%= request.getAttribute("flag3")%>">
     <input type="number"
            required="required"
            id="flag3Ans"
            name="flag3Ans">
+    <span class="large"></span>
     <input type="submit" value="Submit">
 </form>
 </body>
