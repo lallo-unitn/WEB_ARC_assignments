@@ -18,8 +18,9 @@ public class HomeServlet extends HttpServlet {
     public void init() {
         ServletContext ctx = getServletContext();
         try {
-            File flagsFile = new File(this.getServletContext().getRealPath("flags/"));
             if (ctx.getAttribute("users") == null || ctx.getAttribute("flagsArray") == null) {
+                File flagsFile = new File(this.getServletContext().getRealPath("flags/"));
+                String userTxtPath = (this.getServletContext().getRealPath("users/info.txt"));
                 new Initializer(ctx, flagsFile);
             }
         } catch (NullPointerException e) {

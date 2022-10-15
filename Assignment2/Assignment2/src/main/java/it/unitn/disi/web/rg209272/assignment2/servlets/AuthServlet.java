@@ -43,11 +43,6 @@ public class AuthServlet extends HttpServlet {
 
     private boolean checkCredentials(ServletContext ctx, UserBean ub) {
         HashMap<String, UserBean> usersMap = (HashMap<String, UserBean>) ctx.getAttribute("users");
-        for (String key:
-             usersMap.keySet()) {
-            UserBean userBean = usersMap.get(key);
-            System.out.println(userBean.getUsername() + " / " + userBean.getPassword());
-        }
         return usersMap.containsValue(ub);
     }
 }

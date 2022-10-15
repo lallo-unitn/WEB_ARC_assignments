@@ -52,35 +52,27 @@ public class AddUserServlet extends HttpServlet {
 
     private void addUserToTxt(UserBean ub) {
         try {
-            FileOutputStream f = new FileOutputStream(this.getServletContext().getRealPath("users/info.txt"));
-            ObjectOutputStream o = new ObjectOutputStream(f);
-
-            o.writeObject(ub);
+            String line;
+            FileWriter fWriter = new FileWriter(
+                    this.getServletContext().getRealPath("users/info.txt"), true);
+            fWriter.write("username=" + ub.getUsername() +
+                    ", password=" + ub.getPassword() + '\n');
             System.out.println("ADDUSER*addUserToTxt(Userbean): User ADDED");
-
-            o.close();
-            f.close();
-
-            FileInputStream fi = new FileInputStream(this.getServletContext().getRealPath("users/info.txt"));
-            ObjectInputStream oi = new ObjectInputStream(fi);
-
-            // Read objects
-            UserBean pr1;
-            try {
-                while (true) {
-                    pr1 = (UserBean) oi.readObject();
-                    System.out.println(pr1.toString());
-                }
-            } catch (EOFException e) {
-                oi.close();
-                fi.close();
-            }
+            fWriter.close();
+            /*BufferedReader bufferReader = new BufferedReader(
+                    new FileReader(this.getServletContext().getRealPath("users/info.txt")));
+            while ((line = bufferReader.readLine()) != null) {
+                String[] splitLine= line.split("username=");
+                String username = splitLine[1].split(",")[0];
+                System.out.println(username);
+                String unParsedPassword = splitLine[1].split(",")[1];
+                String password = unParsedPassword.split("password=")[1].replace('\n', ' ');
+                System.out.println(password);
+            }*/
         } catch (FileNotFoundException e) {
             System.out.println("ADDUSER*addUserToTxt(Userbean): File not found");
         } catch (IOException e) {
             System.out.println("ADDUSER*addUserToTxt(Userbean): Error initializing stream");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
         }
     }
 }
