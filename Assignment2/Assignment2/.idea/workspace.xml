@@ -11,11 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c495e132-5a15-4aca-9044-66e0cb8c271a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/auxiliary/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/auxiliary/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/AddUserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/AddUserServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/AuthServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/AuthServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/HomeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/HomeServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/auxiliary/ActiveUsersListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/auxiliary/ActiveUsersListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/CheckAnswersServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/CheckAnswersServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/GameServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/GameServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +123,7 @@
       <workItem from="1665673826005" duration="8632000" />
       <workItem from="1665689342351" duration="245000" />
       <workItem from="1665731641646" duration="10414000" />
-      <workItem from="1665756692962" duration="4344000" />
+      <workItem from="1665756692962" duration="8394000" />
     </task>
     <servers />
   </component>

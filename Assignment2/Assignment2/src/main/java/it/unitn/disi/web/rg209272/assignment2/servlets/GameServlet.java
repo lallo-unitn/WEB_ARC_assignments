@@ -29,7 +29,7 @@ public class GameServlet extends HttpServlet {
             } while (chosenFlagsIndex.contains(randomIndex));
             //SET FLAGS IN REQUEST
             request.setAttribute("flag" + i, flagPath + flagsArray.get(randomIndex));
-            chosenFlagsIndex.add(randomIndex, i - 1);
+            chosenFlagsIndex.add(i - 1, randomIndex);
             System.out.println("chosen index: " + chosenFlagsIndex.get(i - 1));
         }
         //SET FLAGS IN SESSION

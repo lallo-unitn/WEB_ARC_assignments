@@ -37,7 +37,7 @@ public class ActiveUsersListener implements ServletContextListener, HttpSessionL
         ServletContext ctx = sbe.getSession().getServletContext();
         HttpSession session = sbe.getSession();
         HashMap<String, UserBean> activeUsers = (HashMap<String, UserBean>) ctx.getAttribute("activeUsers");
-        UserBean ub = (UserBean) session.getAttribute("userBean");
+        UserBean ub = (UserBean) sbe.getValue();
         activeUsers.replace(ub.getUsername(), ub);
         ctx.setAttribute("activeUsers", activeUsers);
     }

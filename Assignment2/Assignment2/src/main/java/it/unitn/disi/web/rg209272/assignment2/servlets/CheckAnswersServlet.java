@@ -51,6 +51,10 @@ public class CheckAnswersServlet extends HttpServlet {
         ArrayList<Integer> chosenFlagsIndex = (ArrayList<Integer>) session.getAttribute("chosenFlagsIndex");
         boolean isAllCorrect = true;
         for (int i = 0; i < 3 && isAllCorrect; i++) {
+            System.out.println("CHECKANSWERS: " + ans[i] + " / " + chosenFlagsIndex.get(i));
+            //CONVERT ANS TO 0-INDEX
+            ans[i] = ans[i] - 1;
+            //CHECK ANS
             if (!ans[i].equals(chosenFlagsIndex.get(i))) {
                 ub.setScore(ub.getScore() - 1);
                 isAllCorrect = false;
@@ -59,8 +63,9 @@ public class CheckAnswersServlet extends HttpServlet {
         if (isAllCorrect) ub.setScore(ub.getScore() + 3);
         session.setAttribute("userBean", ub);
         ServletContext ctx = getServletContext();
-        HashMap<String, UserBean> users = (HashMap<String, UserBean>) ctx.getAttribute("users");
-        users.replace(ub.getUsername(), ub);
+        HashMap<String, UserBean> usersMap = (HashMap<String, UserBean>) ctx.getAttribute("users");
+        usersMap.replace(ub.getUsername(), ub);
+        ctx.setAttribute("users", usersMap);
         rd.forward(request, response);
     }
 }
