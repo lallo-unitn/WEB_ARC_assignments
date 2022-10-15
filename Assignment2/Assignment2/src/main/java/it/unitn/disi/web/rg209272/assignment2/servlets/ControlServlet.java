@@ -13,12 +13,19 @@ public class ControlServlet extends HttpServlet {
         ServletContext ctx = getServletContext();
         HashMap<String, UserBean> activeUsers = (HashMap<String, UserBean>) ctx.getAttribute("activeUsers");
         for (String key :
-                ((HashMap<String, UserBean>) activeUsers).keySet()) {
-            UserBean ub = (UserBean) activeUsers.get(key);
-            System.out.println(ub.getUsername() + ub.getScore());
+                (activeUsers).keySet()) {
+            UserBean ub = activeUsers.get(key);
+            System.out.println("CONTROLSERVLET: " + ub.getUsername() + " / " + ub.getScore());
         }
-        RequestDispatcher rd = request.getRequestDispatcher("private/controlPage.jsp");
-        rd.forward(request, response);
+        HttpSession session = request.getSession();
+        UserBean ub = (UserBean) session.getAttribute("userBean");
+        if (!ub.getUsername().equals("admin")) {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.sendError(401);
+        } else {
+            RequestDispatcher rd = request.getRequestDispatcher("private/controlPage.jsp");
+            rd.forward(request, response);
+        }
     }
 
     @Override

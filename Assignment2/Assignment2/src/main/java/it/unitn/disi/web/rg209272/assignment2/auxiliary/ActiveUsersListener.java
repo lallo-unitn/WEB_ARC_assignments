@@ -41,6 +41,7 @@ public class ActiveUsersListener implements ServletContextListener, HttpSessionL
         activeUsers.replace(ub.getUsername(), ub);
         ctx.setAttribute("activeUsers", activeUsers);
     }
+
     private void removeActiveUser(HttpSessionEvent se) {
         ServletContext ctx = se.getSession().getServletContext();
         HttpSession session = se.getSession();

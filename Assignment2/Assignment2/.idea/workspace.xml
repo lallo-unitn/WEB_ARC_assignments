@@ -12,8 +12,7 @@
     <list default="true" id="c495e132-5a15-4aca-9044-66e0cb8c271a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/auxiliary/ActiveUsersListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/auxiliary/ActiveUsersListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/CheckAnswersServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/CheckAnswersServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/GameServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/GameServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/ControlServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/ControlServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,25 +45,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ricca/OneDrive/7° semestre/WEB ARC/Assignment2/Assignment2/src/main/webapp&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "last_opened_file_path": "C:/Users/ricca/OneDrive/7° semestre/WEB ARC/Assignment2/Assignment2/src/main/webapp/private",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "configurable.group.appearance"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ricca\OneDrive\7° semestre\WEB ARC\Assignment2\Assignment2\src\main\webapp\private" />
       <recent name="C:\Users\ricca\OneDrive\7° semestre\WEB ARC\Assignment2\Assignment2\src\main\webapp" />
       <recent name="C:\Users\ricca\OneDrive\7° semestre\WEB ARC\Assignment2\Assignment2\src\main\java\it\unitn\disi\web\rg209272\assignment2" />
     </key>
@@ -123,7 +123,7 @@
       <workItem from="1665673826005" duration="8632000" />
       <workItem from="1665689342351" duration="245000" />
       <workItem from="1665731641646" duration="10414000" />
-      <workItem from="1665756692962" duration="8394000" />
+      <workItem from="1665756692962" duration="11184000" />
     </task>
     <servers />
   </component>
