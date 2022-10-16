@@ -10,10 +10,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c495e132-5a15-4aca-9044-66e0cb8c271a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Assignment2_RiccardoGennaro209272.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Screenshots/6points.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Screenshots/Unauthorized.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Screenshots/Wrong.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Screenshots/adminAccess.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Screenshots/adminSessionDestried.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Screenshots/gamePage.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Screenshots/login.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Screenshots/loginSucc.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Screenshots/pswNotMatch.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Screenshots/registrationSucc.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Screenshots/userAE.PNG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/auxiliary/ActiveUsersListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/auxiliary/ActiveUsersListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/auxiliary/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/auxiliary/AuthFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/AddUserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/AddUserServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/private/game.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/private/game.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/registration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/CheckAnswersServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/CheckAnswersServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/HomeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/HomeServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unitn/disi/web/rg209272/assignment2/servlets/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,23 +62,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "last_opened_file_path": "C:/Users/ricca/OneDrive/7° semestre/WEB ARC/Assignment2/Assignment2/src/main/webapp/private",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "configurable.group.appearance"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ricca/OneDrive/7° semestre/WEB ARC/Assignment2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ricca\OneDrive\7° semestre\WEB ARC\Assignment2\Assignment2\src\main\webapp\private" />
@@ -139,7 +155,10 @@
       <workItem from="1665673826005" duration="8632000" />
       <workItem from="1665689342351" duration="245000" />
       <workItem from="1665731641646" duration="10414000" />
-      <workItem from="1665756692962" duration="13424000" />
+      <workItem from="1665756692962" duration="13480000" />
+      <workItem from="1665905850049" duration="17894000" />
+      <workItem from="1665944155911" duration="26000" />
+      <workItem from="1665944204278" duration="122000" />
     </task>
     <servers />
   </component>

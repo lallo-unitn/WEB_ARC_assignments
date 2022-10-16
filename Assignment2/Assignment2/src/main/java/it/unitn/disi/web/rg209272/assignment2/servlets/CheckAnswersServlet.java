@@ -30,6 +30,8 @@ public class CheckAnswersServlet extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("HomeServlet");
         try {
             for (int i = 0; i < 3; i++) {
+                if (request.getParameter("flag" + (i + 1) + "Ans").equals("null"))
+                    throw new NullPointerException();
                 ans[i] = Integer.parseInt(request.getParameter("flag" + (i + 1) + "Ans"));
             }
         } catch (Exception e) {
@@ -52,8 +54,6 @@ public class CheckAnswersServlet extends HttpServlet {
         boolean isAllCorrect = true;
         for (int i = 0; i < 3 && isAllCorrect; i++) {
             System.out.println("CHECKANSWERS: " + ans[i] + " / " + chosenFlagsIndex.get(i));
-            //CONVERT ANS TO 0-INDEX
-            ans[i] = ans[i] - 1;
             //CHECK ANS
             if (!ans[i].equals(chosenFlagsIndex.get(i))) {
                 ub.setScore(ub.getScore() - 1);

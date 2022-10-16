@@ -30,7 +30,11 @@ public class AuthFilter implements Filter {
         if (ub != null && ub.getUsername() != null && !ub.getUsername().equals("null")) {
             System.out.println("AUTHFILTER: " + ub.getUsername());
             System.out.println("AUTHFILTER: " + destination);
-            rd = httpRequest.getRequestDispatcher(destination);
+            if (ub.getUsername().equals("admin")) {
+                rd = httpRequest.getRequestDispatcher("ControlServlet");
+            } else {
+                rd = httpRequest.getRequestDispatcher(destination);
+            }
         } else {
             System.out.println("AUTHFILTER: " + "not auth");
             rd = httpRequest.getRequestDispatcher("LoginServlet");

@@ -38,7 +38,9 @@ public class ActiveUsersListener implements ServletContextListener, HttpSessionL
         HttpSession session = sbe.getSession();
         HashMap<String, UserBean> activeUsers = (HashMap<String, UserBean>) ctx.getAttribute("activeUsers");
         UserBean ub = (UserBean) sbe.getValue();
-        activeUsers.replace(ub.getUsername(), ub);
+        activeUsers.remove(ub.getUsername());
+        ub = (UserBean) session.getAttribute("userBean");
+        activeUsers.put(ub.getUsername(), ub);
         ctx.setAttribute("activeUsers", activeUsers);
     }
 
@@ -49,6 +51,6 @@ public class ActiveUsersListener implements ServletContextListener, HttpSessionL
         UserBean ub = (UserBean) session.getAttribute("userBean");
         activeUsers.remove(ub.getUsername(), ub);
         ctx.setAttribute("activeUsers", activeUsers);
-        System.out.println("SESSIONLISTENER: " + ub.getUsername() + "removed from active users");
+        System.out.println("SESSIONLISTENER: " + ub.getUsername() + " removed from active users");
     }
 }

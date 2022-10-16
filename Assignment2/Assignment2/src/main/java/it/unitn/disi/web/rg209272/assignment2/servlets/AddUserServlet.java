@@ -28,6 +28,7 @@ public class AddUserServlet extends HttpServlet {
         if (!password.equals(repeatPsw)) {
             System.out.println("ADDUSER: Wrong credential");
             System.out.println(password + " / " + repeatPsw);
+            request.setAttribute("message", "Passwords do not match");
             rd = request.getRequestDispatcher("RegistrationServlet");
             rd.forward(request, response);
             return;
