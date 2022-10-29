@@ -1,0 +1,24 @@
+:root {
+    color-scheme: dark;
+}
+
+.formulaInput{
+    width: 9em;
+    display: block;
+    margin: 0 auto;
+}
+
+#table{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#table td input{
+    height: 2em;
+    width: 2em
+}
+
+.cell:focus{
+    border-color: red;
+    outline: 0;
+}
