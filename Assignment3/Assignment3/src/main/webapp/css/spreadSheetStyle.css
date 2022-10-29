@@ -22,3 +22,7 @@
     border-color: red;
     outline: 0;
 }
+
+.cell::placeholder{
+    opacity: 1;
+}

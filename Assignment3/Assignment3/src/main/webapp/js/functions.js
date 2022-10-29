@@ -14,16 +14,17 @@ function getJson() {
             for (let col in "ABCD") {
                 HTMLtoWrite = HTMLtoWrite + "<tr>";
                 for (let row = 1; row <= 4; row++) {
+                    let parameter = cellsJSON.cells[cellIndex].id;
                     HTMLtoWrite =
                         HTMLtoWrite +
                         "<td>" +
                         "<input " +
                         "class=\"cell\"" +
                         " type=\"text\" " +
-                        " id=\"(cellsJSON.cells[cellIndex]).id\" " +
-                        " placeholder=\"" + cellsJSON.cells[cellIndex].value + "\"" +
+                        " id=\"" + parameter + "\" " +
                         " readonly=\"readonly\"" +
-                        " onclick=\"showOnInput(" + cellsJSON.cells[cellIndex] + ")\">"+
+                        " placeholder='" + cellsJSON.cells[cellIndex].value + "'" +
+                        " onfocus='showOnInput(\"" + parameter + "\")'>" +
                         "</td>";
                     cellIndex++;
                 }
@@ -36,6 +37,8 @@ function getJson() {
     return cellsJSON;
 }
 
-function showOnInput(cell){
-    document.getElementById("formulaInput").setAttribute("placeholder", cell.value);
+function showOnInput(cellID){
+    let cellElement = document.getElementById(cellID);
+    let formulaInElement = document.getElementById("formulaInput");
+    formulaInElement.value = cellElement.getAttribute("placeholder");
 }
