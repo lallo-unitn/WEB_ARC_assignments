@@ -11,15 +11,31 @@
         <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.SheetServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>GetValuesServlet</servlet-name>
-        <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.GetValuesServlet</servlet-class>
+        <servlet-name>InitServlet</servlet-name>
+        <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.InitServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetCellServlet</servlet-name>
+        <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.GetCellServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateSheetServlet</servlet-name>
+        <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.UpdateSheetServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>SheetServlet</servlet-name>
         <url-pattern>/SheetServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>GetValuesServlet</servlet-name>
-        <url-pattern>/GetValuesServlet</url-pattern>
+        <servlet-name>InitServlet</servlet-name>
+        <url-pattern>/InitServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetCellServlet</servlet-name>
+        <url-pattern>/GetCellServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateSheetServlet</servlet-name>
+        <url-pattern>/UpdateSheetServlet</url-pattern>
     </servlet-mapping>
 </web-app>

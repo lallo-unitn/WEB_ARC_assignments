@@ -9,13 +9,31 @@
     <script src="js/functions.js"></script>
 </head>
 
-<body onLoad="getJson()" style="background-color: black; color: bisque;">
+<body onLoad="init()" style="background-color: black; color: bisque;">
 
-<input class="formulaInput" id="formulaInput">
+<input class="formulaInput"
+        id="formulaInput">
 <div id="tableWrapper">
     <table id="table"></table>
 </div>
 
 </body>
+
+<script>
+    document.getElementById("formulaInput").addEventListener('keyup', (e) => {
+        if(e.key === 'Enter'){
+            submit(inputFormulaEl.value);
+        }else {
+            selectedCell.value = inputFormulaEl.value;
+            console.log(inputFormulaEl + "&&");
+            console.log(selectedCell.value);
+            console.log(e.key);
+        }
+    })
+
+    document.getElementById("formulaInput").addEventListener('focusout', (e) => {
+        submit(inputFormulaEl.value);
+    })
+</script>
 
 </html>

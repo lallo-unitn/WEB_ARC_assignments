@@ -3,22 +3,27 @@ package it.unitn.disi.web.rg209272.assignment3.auxiliary;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CellMapToJson {
-    public CellMapToJson() {
+public class JsonParser {
+    public static String getJson(Cell cell) {
+        StringBuilder sb = new StringBuilder("{");
+        sb.append("\n    \"id\" : \"" + cell.id + "\",")
+                .append("\n    \"value\" : \"" + cell.value + "\",")
+                .append("\n    \"formula\" : \"" + cell.formula + "\"")
+                .append("\n}");
+        return sb.toString();
     }
 
-    public String getJson(SSEngine engine) {
+    public static String getJson(SSEngine engine) {
         HashMap<String, Cell> cellMap = engine.cellMap;
         StringBuilder sb = new StringBuilder("{\"cells\" : [\n");
         Cell cell;
-        CellToJson ctj = new CellToJson();
         ArrayList<String> keysArray = new ArrayList<>();
         keysArray.addAll(cellMap.keySet());
         keysArray.sort(String::compareTo);
         for (String cellId :
                 keysArray) {
             cell = cellMap.get(cellId);
-            sb.append(ctj.getJson(cell)).
+            sb.append(JsonParser.getJson(cell)).
                     append(",");
         }
         String json = sb.toString();
@@ -27,4 +32,5 @@ public class CellMapToJson {
         System.out.println("[CELLMAPTOJSON]\n" + json);
         return json;
     }
+
 }

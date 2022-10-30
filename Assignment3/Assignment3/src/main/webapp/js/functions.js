@@ -1,7 +1,12 @@
-function getJson() {
-    var cellsJSON;
-    var url = "GetValuesServlet";
-    var xhttp = new XMLHttpRequest();
+let selectedCellID;
+let selectedCell;
+let inputFormulaEl;
+
+function init() {
+    inputFormulaEl = document.getElementById("formulaInput");
+    let cellsJSON;
+    let url = "InitServlet";
+    let xhttp = new XMLHttpRequest();
     xhttp.open("GET", url, true);
     //xhttp.responseType = "json";
     xhttp.onreadystatechange = function () {
@@ -24,7 +29,7 @@ function getJson() {
                         " id=\"" + parameter + "\" " +
                         " readonly=\"readonly\"" +
                         " placeholder='" + cellsJSON.cells[cellIndex].value + "'" +
-                        " onfocus='showOnInput(\"" + parameter + "\")'>" +
+                        " onfocus='showOnFocus(\"" + parameter + "\")'>" +
                         "</td>";
                     cellIndex++;
                 }
@@ -37,8 +42,45 @@ function getJson() {
     return cellsJSON;
 }
 
-function showOnInput(cellID){
-    let cellElement = document.getElementById(cellID);
-    let formulaInElement = document.getElementById("formulaInput");
-    formulaInElement.value = cellElement.getAttribute("placeholder");
+function showOnFocus(cellID) {
+    let cellJSON;
+    let url = "GetCellServlet" +
+        "?id=" + cellID;
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("GET", url, true);
+    //xhttp.responseType = "json";
+    selectedCellID = cellID;
+    selectedCell = document.getElementById(selectedCellID);
+    xhttp.onreadystatechange = function () {
+        const done = 4, ok = 200;
+        if (this.readyState === done && this.status === ok) {
+            cellJSON = JSON.parse(this.response);
+            let inputFormulaEl = document.getElementById("formulaInput");
+            inputFormulaEl.value = "=" + cellJSON.formula;
+        }
+    }
+    xhttp.send();
+    return cellJSON;
+}
+
+function submit(value){
+    let xhttp = new XMLHttpRequest();
+    let url = "UpdateSheetServlet";
+    xhttp.open("POST", url, true);
+    xhttp.setRequestHeader("Accept", "application/json");
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    //xhttp.responseType = "json";
+    xhttp.onreadystatechange = function () {
+        const done = 4, ok = 200;
+        if (this.readyState === done && this.status === ok) {
+            console.log("Response");
+        }
+    }
+    selectedCell = document.getElementById(selectedCellID);
+    let data = '{' +
+        '"id" : ' + selectedCellID +
+        ',"value" : ' + selectedCell.getAttribute("placeholder") +
+        ',"formula" : ' + value +
+        '}';
+    xhttp.send(data);
 }
