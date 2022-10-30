@@ -7,14 +7,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Cell {
-    String id;
-    String formula;
-    int value;
-    SSEngine engine=SSEngine.getSSEngine();
-    ArrayList<String> operands=new ArrayList<>();
-    ArrayList<String> operators=new ArrayList<>();
+    public String id;
+    public String formula;
+
+    public int value;
+    SSEngine engine = SSEngine.getSSEngine();
+    ArrayList<String> operands = new ArrayList<>();
+    ArrayList<String> operators = new ArrayList<>();
     // definition of the set of operators
     final Pattern p = Pattern.compile("([*]|[+]|[-]|[/])");
+
+    public Cell(){}
 
     public Cell(String id, String formula) {
         this.id = id;
@@ -23,9 +26,24 @@ public class Cell {
         parseFormula();
     }
 
-    public String getFormula() {return formula;}
+    public Cell(String id, String formula, int value) {
+        this.id = id;
+        this.formula = formula;
+        this.value = value;
+        parseFormula();
+    }
 
-    public int getValue() {return value;}
+    public String getFormula() {
+        return formula;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public String getId() {
+        return id;
+    }
 
     public String toString() {
         StringBuffer sb = new StringBuffer();
@@ -39,23 +57,28 @@ public class Cell {
     }
 
     @Override
-    public Cell clone(){
-        Cell clone=new Cell(this.id,this.formula);
-        clone.value=this.value;
+    public Cell clone() {
+        Cell clone = new Cell(this.id, this.formula);
+        clone.value = this.value;
         return clone;
     }
+
+    public int compareTo(Cell cell){
+        return this.id.compareTo(cell.id);
+    }
+
     // INTERNAL METHODS - do not call ---------------------------------------
-     void setFormula(String formula) {
+    void setFormula(String formula) {
         this.formula = formula;
         parseFormula();
     }
 
-    static boolean isOperandNumeric(String op){
-        boolean retval=true;
+    static boolean isOperandNumeric(String op) {
+        boolean retval = true;
         try {
             Integer.parseInt(op);
-        } catch (NumberFormatException e){
-            retval=false;
+        } catch (NumberFormatException e) {
+            retval = false;
         }
         return retval;
     }
@@ -71,26 +94,26 @@ public class Cell {
             String stringToParse = formula.substring(1);
             operators.clear();
             operands.clear();
-            boolean fail=false;
+            boolean fail = false;
             //Pattern p = Pattern.compile("([*]|[+]|[-]|[/])");
             Matcher m = p.matcher(stringToParse);
             int laststart = 0;
-            String operand=null;
+            String operand = null;
             while (m.find()) {
                 String op = m.group();
                 operators.add(op);
                 int a = m.start();
                 operand = stringToParse.substring(laststart, a);
-                if (operand==null||"".equals(operand)) operand="null";
+                if (operand == null || "".equals(operand)) operand = "null";
                 //System.out.println("---------"+operand);
                 laststart = a + 1;
                 operands.add(operand);
                 if (!isOperandNumeric(operand) && !engine.cellMap.containsKey(operand)) {
-                        fail = true;
+                    fail = true;
                 }
             }
             operand = stringToParse.substring(laststart, stringToParse.length());
-            if (operand==null||"".equals(operand)) operand="null";
+            if (operand == null || "".equals(operand)) operand = "null";
             //System.out.println("---------"+operand);
             operands.add(operand);
             if (!isOperandNumeric(operand) && !engine.cellMap.containsKey(operand)) {
@@ -105,24 +128,26 @@ public class Cell {
             }
         }
     }
+
     /**
      * returns true if no circular depencencies are found starting from this cell
+     *
      * @param id
      * @return
      */
-     boolean checkCircularDependencies(String id){
-        SSEngine ssEngine=SSEngine.getSSEngine();
+    boolean checkCircularDependencies(String id) {
+        SSEngine ssEngine = SSEngine.getSSEngine();
         // this cell depends on its operands
-        for (String s:operands) {
+        for (String s : operands) {
             // check from first level dependencies
             if (s.equals(id)) {
                 System.out.println("------- ERROR!---------CIRCULAR DEPENDENCIES!");
                 return false;
             }
             // recursively check all operand chains
-            Cell x=ssEngine.cellMap.get(s);
-            if (x!=null)
-                if (! x.checkCircularDependencies(id)) {
+            Cell x = ssEngine.cellMap.get(s);
+            if (x != null)
+                if (!x.checkCircularDependencies(id)) {
                     System.out.println("------- ERROR!---------CIRCULAR DEPENDENCIES!");
                     return false;
                 }
@@ -130,99 +155,105 @@ public class Cell {
         return true;
     }
 
-    private boolean evaluateCell(){
+    private boolean evaluateCell() {
         if (operators.isEmpty()) {
             //no operators, there is either a single reference or a value
             if (operands.isEmpty()) { // value
                 //do nothing
             } else { // single reference
                 String operandID = operands.get(0);
-                value=getOperandValue(operandID);
+                value = getOperandValue(operandID);
             }
         } else {
-            int tempValue=getOperandValue(operands.get(0));
-            int index=0;
-            for (String op:operators){
-                String n1=""+tempValue;
-                String n2=operands.get(++index);
-                tempValue=compute(op, n1,n2);
+            int tempValue = getOperandValue(operands.get(0));
+            int index = 0;
+            for (String op : operators) {
+                String n1 = "" + tempValue;
+                String n2 = operands.get(++index);
+                tempValue = compute(op, n1, n2);
             }
-            value=tempValue;
+            value = tempValue;
         }
         // now update all cells which depend from this cell
 
         return true;
     }
+
     Set<Cell> recursiveEvaluateCell() {
-        Set<Cell> affectedCells=new HashSet<>();
+        Set<Cell> affectedCells = new HashSet<>();
         evaluateCell();
         affectedCells.add(this);
-        for (Cell x: engine.dependance.get(id)) {
-            Set<Cell> subset=x.recursiveEvaluateCell();
+        for (Cell x : engine.dependance.get(id)) {
+            Set<Cell> subset = x.recursiveEvaluateCell();
             affectedCells.addAll(subset);
         }
         return affectedCells;
     }
-    private int getOperandValue(String s){
-        int value=0;
+
+    private int getOperandValue(String s) {
+        int value = 0;
         try {
             value = Integer.parseInt(s);
-        }catch (NumberFormatException e) {
-            Cell x=engine.cellMap.get(s);
-            if (s!=null) {
+        } catch (NumberFormatException e) {
+            Cell x = engine.cellMap.get(s);
+            if (s != null) {
                 value = engine.cellMap.get(s).value;
             }
         }
         //System.out.println("===> Operand: "+s+" value:"+value);
         return value;
     }
-    private int compute(String operator, String operand1,String operand2){
+
+    private int compute(String operator, String operand1, String operand2) {
         //System.out.println("===> Computing "+operand1+operator+operand2);
-        int x=getOperandValue(operand1);
-        int y=getOperandValue(operand2);
+        int x = getOperandValue(operand1);
+        int y = getOperandValue(operand2);
         switch (operator) {
             case "+":
-                return (x+y);
+                return (x + y);
             case "-":
-                return (x-y);
+                return (x - y);
             case "*":
-                return (x*y);
+                return (x * y);
             case "/":
-                return (x/y);
+                return (x / y);
         }
         return 0; // it never comes here
     }
-    private String printOperands(){
-        StringBuffer sb=new StringBuffer("");
-        for (String op:operands)
+
+    private String printOperands() {
+        StringBuffer sb = new StringBuffer("");
+        for (String op : operands)
             sb.append(op).append(" ");
         return sb.toString();
     }
-    private String printOperators(){
-        StringBuffer sb=new StringBuffer("");
-        for (String op:operators)
+
+    private String printOperators() {
+        StringBuffer sb = new StringBuffer("");
+        for (String op : operators)
             sb.append(op).append(" ");
         return sb.toString();
     }
 
     // testing method =========================================================
-    private static void createAndAddCell(String id, String formula){
-        SSEngine ssEngine=SSEngine.getSSEngine();
-        Cell c=new Cell(id,formula);
+    private static void createAndAddCell(String id, String formula) {
+        SSEngine ssEngine = SSEngine.getSSEngine();
+        Cell c = new Cell(id, formula);
         System.out.println(c);
-        boolean isOK=c.checkCircularDependencies(c.id);
+        boolean isOK = c.checkCircularDependencies(c.id);
         if (isOK) {
-            System.out.println("it.unitn.ronchet.Spreadsheet.Cell "+c.id+" has no circular references");
+            System.out.println("it.unitn.ronchet.Spreadsheet.Cell " + c.id + " has no circular references");
             ssEngine.addCell(c);
         } else {
-            System.out.println("it.unitn.ronchet.Spreadsheet.Cell "+c.id+" has circular references - not added");
+            System.out.println("it.unitn.ronchet.Spreadsheet.Cell " + c.id + " has circular references - not added");
         }
         System.out.println("====================================");
     }
-    public static void main (String arg[]) {
-        createAndAddCell("A1","=A1+B1*C3-B2"); // not OK
-        createAndAddCell("B2","=D1+B1"); // OK
-        createAndAddCell("A1","=D1+B1*D1-B2"); // OK
-        createAndAddCell("D1","=A1-B2"); //not OK
+
+    public static void main(String arg[]) {
+        createAndAddCell("A1", "=A1+B1*C3-B2"); // not OK
+        createAndAddCell("B2", "=D1+B1"); // OK
+        createAndAddCell("A1", "=D1+B1*D1-B2"); // OK
+        createAndAddCell("D1", "=A1-B2"); //not OK
     }
 }

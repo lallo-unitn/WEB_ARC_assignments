@@ -1,6 +1,7 @@
 let selectedCellID;
 let selectedCell;
 let inputFormulaEl;
+let cellArray = [];
 
 function init() {
     inputFormulaEl = document.getElementById("formulaInput");
@@ -19,17 +20,23 @@ function init() {
             for (let col in "ABCD") {
                 HTMLtoWrite = HTMLtoWrite + "<tr>";
                 for (let row = 1; row <= 4; row++) {
-                    let parameter = cellsJSON.cells[cellIndex].id;
+                    let cellID = cellsJSON.cells[cellIndex].id;
+                    cellArray[cellID] =
+                        {
+                            id: cellID,
+                            formula: cellsJSON.cells[cellIndex].formula,
+                            value: cellsJSON.cells[cellIndex].value
+                        };
                     HTMLtoWrite =
                         HTMLtoWrite +
                         "<td>" +
                         "<input " +
                         "class=\"cell\"" +
                         " type=\"text\" " +
-                        " id=\"" + parameter + "\" " +
+                        " id=\"" + cellID + "\" " +
                         " readonly=\"readonly\"" +
-                        " placeholder='" + cellsJSON.cells[cellIndex].value + "'" +
-                        " onfocus='showOnFocus(\"" + parameter + "\")'>" +
+                        " placeholder='" + cellArray[cellID].value + "'" +
+                        " onfocus='showOnFocus(\"" + cellID + "\")'>" +
                         "</td>";
                     cellIndex++;
                 }
@@ -39,6 +46,28 @@ function init() {
         }
     };
     xhttp.send();
+    document.getElementById("formulaInput").addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+            let value = inputFormulaEl.value;
+            inputFormulaEl.value = "";
+            inputFormulaEl.blur();
+            submit(value);
+
+        } else {
+            selectedCell.value = inputFormulaEl.value;
+            console.log(inputFormulaEl + "&&");
+            console.log(selectedCell.value);
+            console.log(e.key);
+        }
+    })
+
+    document.getElementById("formulaInput").addEventListener('focusout', (e) => {
+        let value = inputFormulaEl.value;
+        if (value !== "") {
+            inputFormulaEl.value = "";
+            submit(value);
+        }
+    })
     return cellsJSON;
 }
 
@@ -56,14 +85,18 @@ function showOnFocus(cellID) {
         if (this.readyState === done && this.status === ok) {
             cellJSON = JSON.parse(this.response);
             let inputFormulaEl = document.getElementById("formulaInput");
-            inputFormulaEl.value = "=" + cellJSON.formula;
+            if (cellJSON.formula === "") {
+                inputFormulaEl.value = "=" + cellJSON.formula;
+            } else {
+                inputFormulaEl.value = cellJSON.formula;
+            }
         }
     }
     xhttp.send();
     return cellJSON;
 }
 
-function submit(value){
+function submit(value) {
     let xhttp = new XMLHttpRequest();
     let url = "UpdateSheetServlet";
     xhttp.open("POST", url, true);
@@ -73,14 +106,28 @@ function submit(value){
     xhttp.onreadystatechange = function () {
         const done = 4, ok = 200;
         if (this.readyState === done && this.status === ok) {
-            console.log("Response");
+            let cellsJSON = JSON.parse(this.response);
+            let size = parseInt(cellsJSON.size);
+            if (size === 0) {
+                selectedCell.value = cellArray[selectedCellID].value;
+                return;
+            }
+            let cellID;
+            let cellToUpdate;
+            for (let i = 0; i < size; i++) {
+                cellID = cellsJSON.updatedCells[i].id;
+                cellArray[cellID].value = cellsJSON.updatedCells[i].value;
+                cellArray[cellID].formula = cellsJSON.updatedCells[i].formula;
+                cellToUpdate = document.getElementById(cellID);
+                cellToUpdate.value = cellArray[cellID].value;
+            }
         }
     }
     selectedCell = document.getElementById(selectedCellID);
     let data = '{' +
-        '"id" : ' + selectedCellID +
-        ',"value" : ' + selectedCell.getAttribute("placeholder") +
-        ',"formula" : ' + value +
+        '"id" : "' + selectedCellID + '"' +
+        ',"value" : "' + selectedCell.getAttribute("placeholder") + '"' +
+        ',"formula" : "' + value + '"' +
         '}';
     xhttp.send(data);
 }

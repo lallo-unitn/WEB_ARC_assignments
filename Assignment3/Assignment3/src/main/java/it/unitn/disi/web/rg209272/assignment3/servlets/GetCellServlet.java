@@ -1,7 +1,7 @@
 package it.unitn.disi.web.rg209272.assignment3.servlets;
 
 import it.unitn.disi.web.rg209272.assignment3.auxiliary.Cell;
-import it.unitn.disi.web.rg209272.assignment3.auxiliary.JsonParser;
+import it.unitn.disi.web.rg209272.assignment3.auxiliary.Json;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -20,7 +20,7 @@ public class GetCellServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        out.print(JsonParser.getJson(outCell));
+        out.print(Json.getJson(outCell));
         out.flush();
     }
 
