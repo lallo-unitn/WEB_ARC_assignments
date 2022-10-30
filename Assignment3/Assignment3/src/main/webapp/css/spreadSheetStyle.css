@@ -18,8 +18,7 @@
     width: 6em
 }
 
-.cell:focus{
-    border-color: red;
+.cell{
     outline: 0;
 }
 

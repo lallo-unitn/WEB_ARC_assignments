@@ -28,10 +28,10 @@ public class UpdateSheetServlet extends HttpServlet {
             BufferedReader reader = request.getReader();
             while ((line = reader.readLine()) != null)
                 jb.append(line);
-        } catch (Exception e) { /*report an error*/ }
+        } catch (Exception e) { e.printStackTrace(); }
 
         try {
-            System.out.println(jb.toString());
+            System.out.println(jb);
             cellNewValue = objectMapper.readValue(jb.toString(), Cell.class);
         } catch (JsonSyntaxException e) {
             // crash and burn

@@ -35,7 +35,6 @@ function init() {
                         " type=\"text\" " +
                         " id=\"" + cellID + "\" " +
                         " readonly=\"readonly\"" +
-                        " placeholder='" + cellArray[cellID].value + "'" +
                         " onfocus='showOnFocus(\"" + cellID + "\")'>" +
                         "</td>";
                     cellIndex++;
@@ -52,7 +51,7 @@ function init() {
             inputFormulaEl.value = "";
             inputFormulaEl.blur();
             submit(value);
-
+            selectedCell.removeAttribute("style");
         } else {
             selectedCell.value = inputFormulaEl.value;
             console.log(inputFormulaEl + "&&");
@@ -63,37 +62,28 @@ function init() {
 
     document.getElementById("formulaInput").addEventListener('focusout', (e) => {
         let value = inputFormulaEl.value;
-        if (value !== "") {
-            inputFormulaEl.value = "";
+        inputFormulaEl.value = "";
+        if (value !== "" && value !== "=") {
             submit(value);
         }
+        selectedCell.removeAttribute("style");
+        console.log(selectedCellID);
     })
     return cellsJSON;
 }
 
 function showOnFocus(cellID) {
-    let cellJSON;
-    let url = "GetCellServlet" +
-        "?id=" + cellID;
-    let xhttp = new XMLHttpRequest();
-    xhttp.open("GET", url, true);
-    //xhttp.responseType = "json";
     selectedCellID = cellID;
     selectedCell = document.getElementById(selectedCellID);
-    xhttp.onreadystatechange = function () {
-        const done = 4, ok = 200;
-        if (this.readyState === done && this.status === ok) {
-            cellJSON = JSON.parse(this.response);
-            let inputFormulaEl = document.getElementById("formulaInput");
-            if (cellJSON.formula === "") {
-                inputFormulaEl.value = "=" + cellJSON.formula;
-            } else {
-                inputFormulaEl.value = cellJSON.formula;
-            }
-        }
+    selectedCell.setAttribute("style", "border-color:red");
+    let cellObj = cellArray[selectedCellID];
+    inputFormulaEl = document.getElementById("formulaInput");
+    inputFormulaEl.focus();
+    if (cellObj.formula === "") {
+        inputFormulaEl.value = "=" + cellObj.formula;
+    } else {
+        inputFormulaEl.value = cellObj.formula;
     }
-    xhttp.send();
-    return cellJSON;
 }
 
 function submit(value) {
@@ -124,9 +114,10 @@ function submit(value) {
         }
     }
     selectedCell = document.getElementById(selectedCellID);
+    let cellObj = cellArray[selectedCellID];
     let data = '{' +
         '"id" : "' + selectedCellID + '"' +
-        ',"value" : "' + selectedCell.getAttribute("placeholder") + '"' +
+        ',"value" : "' + cellObj.value + '"' +
         ',"formula" : "' + value + '"' +
         '}';
     xhttp.send(data);
