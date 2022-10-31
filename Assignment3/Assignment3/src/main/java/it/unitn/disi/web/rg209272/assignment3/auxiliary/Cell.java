@@ -251,8 +251,9 @@ public class Cell {
     }
 
     public static void main(String arg[]) {
-        createAndAddCell("A1", "=A1+B1*C3-B2"); // not OK
-        createAndAddCell("B2", "=D1+B1"); // OK
+        createAndAddCell("A1", "=12"); // not OK
+        createAndAddCell("A2", "=12"); // not OK
+        createAndAddCell("B2", "=A1+A2"); // OK
         createAndAddCell("A1", "=D1+B1*D1-B2"); // OK
         createAndAddCell("D1", "=A1-B2"); //not OK
     }
