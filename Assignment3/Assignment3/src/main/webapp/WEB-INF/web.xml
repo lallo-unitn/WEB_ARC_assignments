@@ -12,11 +12,11 @@
     </servlet>
     <servlet>
         <servlet-name>InitServlet</servlet-name>
-        <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.InitServlet</servlet-class>
+        <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.SendStateServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>GetCellServlet</servlet-name>
-        <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.GetCellServlet</servlet-class>
+        <servlet-name>SendStateServlet</servlet-name>
+        <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.SendStateServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateSheetServlet</servlet-name>
@@ -31,8 +31,8 @@
         <url-pattern>/InitServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>GetCellServlet</servlet-name>
-        <url-pattern>/GetCellServlet</url-pattern>
+        <servlet-name>SendStateServlet</servlet-name>
+        <url-pattern>/SendStateServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpdateSheetServlet</servlet-name>

@@ -13,9 +13,13 @@ public class Json {
         return sb.toString();
     }
 
-    public static String getJson(SSEngine engine) {
+    public static String getJson(SSEngine engine, long lastModServerMill) {
         HashMap<String, Cell> cellMap = engine.cellMap;
-        StringBuilder sb = new StringBuilder("{\"cells\" : [\n");
+        StringBuilder sb = new StringBuilder(
+                "{\"empty\" : \"false\"," +
+                        "\n\"lastModTimeServer\" :\"" + lastModServerMill + "\"," +
+                        "\n\"cells\" : [\n"
+        );
         Cell cell;
         ArrayList<String> keysArray = new ArrayList<>(cellMap.keySet());
         keysArray.sort(String::compareTo);
@@ -26,7 +30,7 @@ public class Json {
                     append(",");
         }
         String json = sb.toString();
-        json = json.substring(0, json.length()-1);
+        json = json.substring(0, json.length() - 1);
         json = json + "\n]}";
         System.out.println("[CELLMAPTOJSON]\n" + json);
         return json;

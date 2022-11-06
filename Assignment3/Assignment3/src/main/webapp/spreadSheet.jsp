@@ -16,7 +16,7 @@
 <div id="tableWrapper">
     <table id="table"></table>
 </div>
-
+<div id="demo"></div>
 </body>
 
 </html>
