@@ -1,12 +1,12 @@
 const errInFormula = "### ERROR IN FORMULA ###";
 
-let selectedCellID;
-let selectedCell;
-let inputFormulaEl;
+let selectedCellID = null;
+let selectedCell = null;
+let inputFormulaEl = null;
 let cellArray = [];
 let lastModTimeClient = 0;
 let pollingInterval = null;
-setInterval(myTimer, 1000);
+//setInterval(myTimer, 1000);
 
 function myTimer() {
     const date = new Date();
@@ -16,7 +16,7 @@ function myTimer() {
 function init() {
     inputFormulaEl = document.getElementById("formulaInput");
     let cellsJSON;
-    let url = "SendStateServlet";
+    let url = "InitServlet";
     let xhttp = new XMLHttpRequest();
     xhttp.open("GET", url, true);
     //xhttp.responseType = "json";
@@ -61,58 +61,34 @@ function init() {
                 }
             }
             lastModTimeClient = cellsJSON.lastModTimeServer;
-            pollingInterval = setInterval(updateState, 5000);
+            pollingInterval = setInterval(statePolling, 5000);
         }
     };
     xhttp.send();
+
+    document.getElementById("formulaInput").addEventListener('focus', (e) => {
+        if(selectedCell !== null){
+            inputFormulaEl.value = cellArray[selectedCellID].formula;
+            selectedCell.value = cellArray[selectedCellID].formula;
+        }
+    })
+
     document.getElementById("formulaInput").addEventListener('keyup', (e) => {
         if (e.key === 'Enter') {
             let formula = inputFormulaEl.value;
             inputFormulaEl.value = "";
             inputFormulaEl.blur();
-            if (
-                formula !== "" &&
-                formula !== "=" &&
-                formula !== cellArray[selectedCellID].formula &&
-                !formula.includes(errInFormula)
-            ) {
-                submit(formula);
-            } else if (
-                formula === "" ||
-                formula === "="
-            ) {
-                selectedCell.value = "";
-            } else {
-                selectedCell.value = cellArray[selectedCellID].value;
-            }
+            submit_wrapper(formula);
         } else {
             selectedCell.value = inputFormulaEl.value;
-            console.log(inputFormulaEl + "&&");
-            console.log(selectedCell.value);
-            console.log(e.key);
         }
     })
 
     document.getElementById("formulaInput").addEventListener('focusout', (e) => {
         let formula = inputFormulaEl.value;
         inputFormulaEl.value = "";
-        if (
-            formula !== "" &&
-            formula !== "=" &&
-            formula !== cellArray[selectedCellID].formula &&
-            !formula.includes(errInFormula)
-        ) {
-            submit(formula);
-        } else if (
-            formula === "" ||
-            formula === "="
-        ) {
-            selectedCell.value = "";
-        } else {
-            selectedCell.value = cellArray[selectedCellID].value;
-        }
+        submit_wrapper(formula);
         selectedCell.style.borderColor = null;
-        console.log(selectedCellID);
     })
 }
 
@@ -137,9 +113,10 @@ function checkIfEmpty(cellID) {
 function checkIfError(cellID) {
     let cell = document.getElementById(cellID);
     let formula = cellArray[cellID].formula;
-    console.log("----------" + formula + "----------");
+    console.log("----------FORMULA----------");
+    console.log(formula);
+    console.log("--------END FORMULA--------");
     if (formula.includes(errInFormula)) {
-        cellArray[cellID].formula = "=" + errInFormula;
         cell.style.background = "#c41414"
         return true;
     } else {
@@ -165,9 +142,27 @@ function onCellFocus(cellID) {
     }
 }
 
+function submit_wrapper(formula){
+    if (
+        formula !== "" &&
+        formula !== "=" &&
+        formula !== cellArray[selectedCellID].formula &&
+        !formula.includes(errInFormula)
+    ) {
+        submit(formula);
+    } else if (
+        formula === "" ||
+        formula === "="
+    ) {
+        selectedCell.value = "";
+    } else {
+        selectedCell.value = cellArray[selectedCellID].value;
+    }
+}
+
 function submit(formula) {
     let xhttp = new XMLHttpRequest();
-    let url = "UpdateSheetServlet";
+    let url = "ChangeStateServlet";
     xhttp.open("POST", url, true);
     xhttp.setRequestHeader("Accept", "application/json");
     xhttp.setRequestHeader("Content-Type", "application/json");
@@ -177,25 +172,31 @@ function submit(formula) {
         if (this.readyState === done && this.status === ok) {
             let json = JSON.parse(this.response);
             let size = parseInt(json.size);
+            console.log("Size = " + size);
             if (size === 0) {
+                cellArray[selectedCellID].value = 0;
+                cellArray[selectedCellID].formula = formula;
                 selectedCell.value = cellArray[selectedCellID].value;
-                return;
-            }
-            if (json.lastModTime !== null && json.lastModTime !== undefined && json.lastModTime !== "undefined") {
-                lastModTimeClient = json.lastModTime;
-            }
-            let cellID;
-            let cellToUpdate;
-            let formula;
-            for (let i = 0; i < size; i++) {
-                cellID = json.updatedCells[i].id;
-                cellToUpdate = document.getElementById(cellID);
-                cellArray[cellID].value = json.updatedCells[i].value;
-                formula = json.updatedCells[i].formula;
-                cellArray[cellID].formula = formula;
-                cellToUpdate.value = cellArray[cellID].value;
-                checkIfError(cellID);
-                checkIfEmpty(cellID);
+                selectedCell.formula = cellArray[selectedCellID].formula;
+                checkIfError(selectedCellID);
+                checkIfEmpty(selectedCellID);
+            } else {
+                if (json.lastModTimeServer !== null && json.lastModTimeServer !== undefined && json.lastModTimeServer !== "undefined") {
+                    lastModTimeClient = json.lastModTimeServer;
+                }
+                let cellID;
+                let cellToUpdate;
+                let formula;
+                for (let i = 0; i < size; i++) {
+                    cellID = json.updatedCells[i].id;
+                    cellToUpdate = document.getElementById(cellID);
+                    cellArray[cellID].value = json.updatedCells[i].value;
+                    formula = json.updatedCells[i].formula;
+                    cellArray[cellID].formula = formula;
+                    cellToUpdate.value = cellArray[cellID].value;
+                    checkIfError(cellID);
+                    checkIfEmpty(cellID);
+                }
             }
         }
     }
@@ -210,12 +211,15 @@ function submit(formula) {
         ',"formula" : "' + formula + '"' +
         '}';
     xhttp.send(data);
+    console.log("==============SUBMIT==============");
+    console.log(data);
+    console.log("============END SUBMIT============");
 }
 
-function updateState() {
+function statePolling() {
     console.log("refreshing");
     let xhttp = new XMLHttpRequest();
-    let url = "UpdateSheetServlet";
+    let url = "PollingServlet";
     xhttp.open("POST", url, true);
     xhttp.setRequestHeader("Accept", "application/json");
     xhttp.setRequestHeader("Content-Type", "application/json");
@@ -241,7 +245,7 @@ function updateState() {
                         cellToUpdate = document.getElementById(cellID);
                         formula = json.cells[cellIndex].formula;
                         if (formula.includes(errInFormula)) {
-                            cellArray[cellID].value = value;
+                            cellArray[cellID].value = 0;
                         }
                         cellArray[cellID].formula = formula;
                         cellToUpdate.value = cellArray[cellID].value;

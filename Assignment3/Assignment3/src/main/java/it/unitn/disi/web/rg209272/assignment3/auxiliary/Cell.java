@@ -7,6 +7,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Cell {
+
+    private final String errorLog = " ### ERROR IN FORMULA ###";
     public String id;
     public String formula;
 
@@ -89,6 +91,7 @@ public class Cell {
                 value = Integer.parseInt(formula);
             } catch (NumberFormatException ex) {
                 value = 0;
+                this.appendErrorLog(formula);
             }
         } else {
             String stringToParse = formula.substring(1);
@@ -121,11 +124,20 @@ public class Cell {
             }
             if (fail) {
                 System.out.println("ERROR IN STRING PARSING");
-                formula = formula + " ### ERROR IN FORMULA ###";
+                this.appendErrorLog(this.formula);
                 value = 0;
                 operands.clear();
                 operators.clear();
             }
+        }
+    }
+
+    private void appendErrorLog(String formula) {
+        if (!formula.equals("")) {
+            if (formula.contains(errorLog)) {
+                formula = formula.split(errorLog)[0];
+            }
+            this.formula = formula + errorLog;
         }
     }
 
@@ -142,6 +154,7 @@ public class Cell {
             // check from first level dependencies
             if (s.equals(id)) {
                 System.out.println("------- ERROR!---------CIRCULAR DEPENDENCIES!");
+               appendErrorLog(this.formula);
                 return false;
             }
             // recursively check all operand chains
@@ -149,6 +162,7 @@ public class Cell {
             if (x != null)
                 if (!x.checkCircularDependencies(id)) {
                     System.out.println("------- ERROR!---------CIRCULAR DEPENDENCIES!");
+                    appendErrorLog(this.formula);
                     return false;
                 }
         }

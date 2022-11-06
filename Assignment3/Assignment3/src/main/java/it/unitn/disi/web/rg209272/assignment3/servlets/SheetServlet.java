@@ -7,7 +7,7 @@ import java.io.IOException;
 public class SheetServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("spreadSheet.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("spreadSheet.html");
         rd.forward(request, response);
     }
 }

@@ -1,5 +1,10 @@
 package it.unitn.disi.web.rg209272.assignment3.auxiliary;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -36,4 +41,16 @@ public class Json {
         return json;
     }
 
+    public static StringBuilder readJson(HttpServletRequest request) {
+        StringBuilder jb = new StringBuilder();
+        String line;
+        try {
+            BufferedReader reader = request.getReader();
+            while ((line = reader.readLine()) != null)
+                jb.append(line);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jb;
+    }
 }

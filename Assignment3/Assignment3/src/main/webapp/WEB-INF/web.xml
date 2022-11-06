@@ -12,15 +12,23 @@
     </servlet>
     <servlet>
         <servlet-name>InitServlet</servlet-name>
-        <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.SendStateServlet</servlet-class>
+        <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.InitServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SendStateServlet</servlet-name>
-        <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.SendStateServlet</servlet-class>
+        <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.InitServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateSheetServlet</servlet-name>
         <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.UpdateSheetServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PollingServlet</servlet-name>
+        <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.PollingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangeStateServlet</servlet-name>
+        <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.ChangeStateServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>SheetServlet</servlet-name>
@@ -37,5 +45,13 @@
     <servlet-mapping>
         <servlet-name>UpdateSheetServlet</servlet-name>
         <url-pattern>/UpdateSheetServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PollingServlet</servlet-name>
+        <url-pattern>/PollingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeStateServlet</servlet-name>
+        <url-pattern>/ChangeStateServlet</url-pattern>
     </servlet-mapping>
 </web-app>
