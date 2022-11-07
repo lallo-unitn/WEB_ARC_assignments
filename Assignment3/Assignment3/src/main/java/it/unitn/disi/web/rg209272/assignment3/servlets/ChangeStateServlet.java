@@ -35,9 +35,10 @@ public class ChangeStateServlet extends HttpServlet {
         SSEngine engine = (SSEngine) ctx.getAttribute("engine");
         String json;
         ArrayList<Cell> modCellsArray;
-        Set<Cell> modCellsSet = engine.modifyCell(cellNewValue.getId(), cellNewValue.getFormula());
+        Set<Cell> modCellsSet;
+        modCellsSet = engine.modifyCell(cellNewValue.getId(), cellNewValue.getFormula());
         if (modCellsSet != null) {
-            modCellsArray = new ArrayList<>(engine.modifyCell(cellNewValue.getId(), cellNewValue.getFormula()));
+            modCellsArray = new ArrayList<>(modCellsSet);
             modCellsArray.sort(Cell::compareTo);
             json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(modCellsArray);
             long currentTimeMillis = System.currentTimeMillis();

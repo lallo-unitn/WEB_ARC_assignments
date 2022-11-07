@@ -1,21 +1,16 @@
 package it.unitn.disi.web.rg209272.assignment3.auxiliary;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Json {
     public static String getJson(Cell cell) {
-        StringBuilder sb = new StringBuilder("{");
-        sb.append("\n    \"id\" : \"" + cell.id + "\",")
-                .append("\n    \"value\" : \"" + cell.value + "\",")
-                .append("\n    \"formula\" : \"" + cell.formula + "\"")
-                .append("\n}");
-        return sb.toString();
+        return "{" + "\n    \"id\" : \"" + cell.id + "\"," +
+                "\n    \"value\" : \"" + cell.value + "\"," +
+                "\n    \"formula\" : \"" + cell.formula + "\"" +
+                "\n}";
     }
 
     public static String getJson(SSEngine engine, long lastModServerMill) {

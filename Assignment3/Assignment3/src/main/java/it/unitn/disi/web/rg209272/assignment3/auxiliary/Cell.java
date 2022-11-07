@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 
 public class Cell {
 
-    private final String errorLog = " ### ERROR IN FORMULA ###";
     public String id;
     public String formula;
 
@@ -19,7 +18,8 @@ public class Cell {
     // definition of the set of operators
     final Pattern p = Pattern.compile("([*]|[+]|[-]|[/])");
 
-    public Cell(){}
+    public Cell() {
+    }
 
     public Cell(String id, String formula) {
         this.id = id;
@@ -65,7 +65,7 @@ public class Cell {
         return clone;
     }
 
-    public int compareTo(Cell cell){
+    public int compareTo(Cell cell) {
         return this.id.compareTo(cell.id);
     }
 
@@ -134,6 +134,7 @@ public class Cell {
 
     private void appendErrorLog(String formula) {
         if (!formula.equals("")) {
+            String errorLog = " ### ERROR IN FORMULA ###";
             if (formula.contains(errorLog)) {
                 formula = formula.split(errorLog)[0];
             }
@@ -154,7 +155,7 @@ public class Cell {
             // check from first level dependencies
             if (s.equals(id)) {
                 System.out.println("------- ERROR!---------CIRCULAR DEPENDENCIES!");
-               appendErrorLog(this.formula);
+                appendErrorLog(this.formula);
                 return false;
             }
             // recursively check all operand chains

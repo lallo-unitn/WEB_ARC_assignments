@@ -10,18 +10,28 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class InitServlet extends HttpServlet {
+
+    private ServletContext ctx = null;
+
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void init() {
         SSEngine engine = SSEngine.getSSEngine();
-        ServletContext ctx = this.getServletContext();
+        this.ctx = this.getServletContext();
         ctx.setAttribute("engine", engine);
         ctx.setAttribute("cellMap", CellMapBridge.getCellMap(engine));
         long currentTimeMillis = System.currentTimeMillis();
         ctx.setAttribute("lastModServerMill", currentTimeMillis);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        SSEngine engine = (SSEngine) ctx.getAttribute("engine");
+        long lastModServerMill;
+        lastModServerMill = (long) ctx.getAttribute("lastModServerMill");
         PrintWriter out = response.getWriter();
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        out.print(Json.getJson(engine, currentTimeMillis));
+        out.print(Json.getJson(engine, lastModServerMill));
         out.flush();
     }
 

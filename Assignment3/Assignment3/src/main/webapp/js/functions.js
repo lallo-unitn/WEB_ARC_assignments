@@ -6,6 +6,7 @@ let inputFormulaEl = null;
 let cellArray = [];
 let lastModTimeClient = 0;
 let pollingInterval = null;
+
 //setInterval(myTimer, 1000);
 
 function myTimer() {
@@ -67,7 +68,7 @@ function init() {
     xhttp.send();
 
     document.getElementById("formulaInput").addEventListener('focus', (e) => {
-        if(selectedCell !== null){
+        if (selectedCell !== null) {
             inputFormulaEl.value = cellArray[selectedCellID].formula;
             selectedCell.value = cellArray[selectedCellID].formula;
         }
@@ -142,7 +143,7 @@ function onCellFocus(cellID) {
     }
 }
 
-function submit_wrapper(formula){
+function submit_wrapper(formula) {
     if (
         formula !== "" &&
         formula !== "=" &&

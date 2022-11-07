@@ -20,7 +20,7 @@ public class SSEngine {
     private SSEngine() {
     }
 
-    public static SSEngine getSSEngine() {
+    public static synchronized SSEngine getSSEngine() {
         if (engine == null) {
             engine = new SSEngine();
             engine.setup();
@@ -30,7 +30,7 @@ public class SSEngine {
     // end of singleton pattern -----------
 
 
-    public Set<Cell> modifyCell(String id, String formula) {
+    public synchronized Set<Cell> modifyCell(String id, String formula) {
         LinkedList<Cell> affectedCells = new LinkedList<>();
         //System.out.println("Trying to apply "+formula+" to "+id);
         Cell theCell = cellMap.get(id);
@@ -38,12 +38,12 @@ public class SSEngine {
         theCell.setFormula(formula);
         if (!theCell.checkCircularDependencies(id)) {
             //restore cell
-            //theCell.formula = clone.formula;
-            //theCell.id = clone.id;
-            //theCell.value = clone.value;
-            HashSet<Cell> circDepSet = new HashSet<>();
-            circDepSet.add(theCell);
-            return circDepSet;
+            theCell.formula = clone.formula;
+            theCell.id = clone.id;
+            theCell.value = clone.value;
+            //HashSet<Cell> circDepSet = new HashSet<>();
+            //circDepSet.add(theCell);
+            return null;
         }
         // remove all the old dependencies, looping over operands before modification
         for (String o : clone.operands) {

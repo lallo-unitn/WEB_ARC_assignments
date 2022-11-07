@@ -19,10 +19,6 @@
         <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.InitServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UpdateSheetServlet</servlet-name>
-        <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.UpdateSheetServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>PollingServlet</servlet-name>
         <servlet-class>it.unitn.disi.web.rg209272.assignment3.servlets.PollingServlet</servlet-class>
     </servlet>
@@ -41,10 +37,6 @@
     <servlet-mapping>
         <servlet-name>SendStateServlet</servlet-name>
         <url-pattern>/SendStateServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateSheetServlet</servlet-name>
-        <url-pattern>/UpdateSheetServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PollingServlet</servlet-name>
