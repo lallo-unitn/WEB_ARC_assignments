@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpaBuddyIdeaProjectConfig">
+    <option name="defaultUnitInitialized" value="true" />
+    <option name="renamerInitialized" value="true" />
+    <option name="sourceModelValue" value="Default" />
+    <option name="reverseEngineeringLastDbConnectionId" value="9c20bd55-2133-4c11-b066-175e915be835" />
+    <option name="reLastEntityCreationPackage" value="src/main/java/it/unitn/disi/web/rg209272/assignment4_wildfly/entities" />
+    <option name="newEntityIdStrategy" />
+  </component>
+</project>

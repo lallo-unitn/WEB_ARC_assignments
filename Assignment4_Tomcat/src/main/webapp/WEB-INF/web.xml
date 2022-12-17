@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <servlet>
+        <servlet-name>StudentServlet</servlet-name>
+        <servlet-class>it.unitn.disi.web.rg209272.assignment4_tomcat.servlet.StudentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdvisorChoiceServlet</servlet-name>
+        <servlet-class>it.unitn.disi.web.rg209272.assignment4_tomcat.servlet.AdvisorChoiceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StudentServlet</servlet-name>
+        <url-pattern>/StudentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdvisorChoiceServlet</servlet-name>
+        <url-pattern>/AdvisorChoiceServlet</url-pattern>
+    </servlet-mapping>
+</web-app>
