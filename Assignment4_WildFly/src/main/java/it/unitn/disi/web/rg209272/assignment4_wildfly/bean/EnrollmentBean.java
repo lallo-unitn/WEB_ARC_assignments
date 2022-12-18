@@ -1,7 +1,5 @@
 package it.unitn.disi.web.rg209272.assignment4_wildfly.bean;
 
-
-import it.unitn.disi.web.rg209272.assignment4_wildfly.entities.Course;
 import it.unitn.disi.web.rg209272.assignment4_wildfly.entities.Enrollment;
 import it.unitn.disi.web.rg209272.assignment4_wildfly.entities.Student;
 
@@ -29,4 +27,5 @@ public class EnrollmentBean {
         query.setParameter("stMatriculation", student);
         return query.getResultList();
     }
+
 }

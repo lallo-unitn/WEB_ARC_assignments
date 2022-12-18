@@ -15,7 +15,7 @@
 <br>
 <hr>
 <h2>Advisor Choice Page</h2>
-<form action="${pageContext.request.contextPath}/advisorChoiceServlet" method="GET">
+<form action="${pageContext.request.contextPath}/AdvisorChoiceServlet" method="GET">
     <input type="number"
            required="required"
            name="matriculation">

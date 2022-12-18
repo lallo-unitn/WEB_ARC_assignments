@@ -1,6 +1,6 @@
 package it.unitn.disi.web.rg209272.assignment4_tomcat.servlet;
 
-import it.unitn.disi.web.rg209272.assignment4_tomcat.RemoteServiceInitializer;
+import it.unitn.disi.web.rg209272.assignment4_tomcat.serviceLocator.RemoteServiceInitializer;
 import it.unitn.disi.web.rg209272.assignment4_wildfly.DTOs.EnrollmentDTO;
 import it.unitn.disi.web.rg209272.assignment4_wildfly.DTOs.StudentDTO;
 import it.unitn.disi.web.rg209272.assignment4_wildfly.facade.BackFacade;

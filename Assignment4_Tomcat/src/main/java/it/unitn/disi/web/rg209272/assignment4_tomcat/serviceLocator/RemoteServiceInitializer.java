@@ -1,16 +1,22 @@
-package it.unitn.disi.web.rg209272.assignment4_tomcat;
+package it.unitn.disi.web.rg209272.assignment4_tomcat.serviceLocator;
 
 import it.unitn.disi.web.rg209272.assignment4_wildfly.facade.BackFacade;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import java.util.HashMap;
 import java.util.Properties;
 
 public class RemoteServiceInitializer {
     private static RemoteServiceInitializer instance;
     private Context ctx;
     private BackFacade backFacade;
+
+    private static HashMap<String, BackFacade> cache;
+    static {
+        cache = new HashMap<String, BackFacade> ();
+    }
 
     private RemoteServiceInitializer() {
         this.ctx = createInitialContext();
@@ -41,10 +47,13 @@ public class RemoteServiceInitializer {
     }
 
     public synchronized BackFacade getBackFacade() {
+        String jndiName = "ejb:/Assignment4_WildFly-1.0-SNAPSHOT/BackFacadeBean!" +
+            "it.unitn.disi.web.rg209272.assignment4_wildfly.facade.BackFacade";
+        this.backFacade = cache.get(jndiName);
         if (this.backFacade == null) {
             try {
-                String name = "ejb:/Assignment4_WildFly-1.0-SNAPSHOT/BackFacadeBean!it.unitn.disi.web.rg209272.assignment4_wildfly.facade.BackFacade";
-                this.backFacade = (BackFacade) ctx.lookup(name);
+                this.backFacade = (BackFacade) ctx.lookup(jndiName);
+                cache.put(jndiName, this.backFacade);
             } catch (NamingException e) {
                 e.printStackTrace();
                 this.backFacade = null;

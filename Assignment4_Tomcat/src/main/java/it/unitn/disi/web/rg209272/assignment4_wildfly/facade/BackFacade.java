@@ -8,8 +8,6 @@ import java.util.List;
 
 public interface BackFacade {
     StudentDTO getStudent(int matriculation);
-
-    TeacherDTO getTeacher(String surname);
-
     List<EnrollmentDTO> getStudentCourses(int matriculation);
+    List<TeacherDTO> getTeacherByStudent(int matriculation);
 }

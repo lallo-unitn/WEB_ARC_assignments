@@ -1,8 +1,6 @@
 package it.unitn.disi.web.rg209272.assignment4_wildfly.facade;
 
-import it.unitn.disi.web.rg209272.assignment4_wildfly.DTOAssembler.EnrollmentDTOAssembler;
-import it.unitn.disi.web.rg209272.assignment4_wildfly.DTOAssembler.StudentDTOAssembler;
-import it.unitn.disi.web.rg209272.assignment4_wildfly.DTOAssembler.TeacherDTOAssembler;
+import it.unitn.disi.web.rg209272.assignment4_wildfly.DTOAssembler.DTOAssembler;
 import it.unitn.disi.web.rg209272.assignment4_wildfly.DTOs.EnrollmentDTO;
 import it.unitn.disi.web.rg209272.assignment4_wildfly.DTOs.StudentDTO;
 import it.unitn.disi.web.rg209272.assignment4_wildfly.DTOs.TeacherDTO;
@@ -37,24 +35,29 @@ public class BackFacadeBean implements BackFacade {
     @Override
     public StudentDTO getStudent(int matriculation) {
         Student student = this.studentBean.getStudentByMatriculation(matriculation);
-        return StudentDTOAssembler.getStudentDTO(student);
-    }
-
-    @Override
-    public TeacherDTO getTeacher(String surname) {
-        Teacher teacher = this.teacherBean.getTeacherBySurname(surname);
-        return TeacherDTOAssembler.getTeacherDTO(teacher);
+        return DTOAssembler.getStudentDTO(student);
     }
 
     @Override
     public List<EnrollmentDTO> getStudentCourses(int matriculation) {
         Student student = this.studentBean.getStudentByMatriculation(matriculation);
-        List<Enrollment> enrollment = this.enrollmentBean.getEnrollmentByStudent(student);
+        List<Enrollment> enrollmentList = this.enrollmentBean.getEnrollmentByStudent(student);
         List<EnrollmentDTO> enrollmentDTOList = (List<EnrollmentDTO>) new LinkedList();
         for (Enrollment e:
-             enrollment) {
-            enrollmentDTOList.add(EnrollmentDTOAssembler.getEnrollmentDTO(e));
+                enrollmentList) {
+            enrollmentDTOList.add(DTOAssembler.getEnrollmentDTO(e));
         }
         return enrollmentDTOList;
+    }
+    @Override
+    public List<TeacherDTO> getTeacherByStudent(int matriculation) {
+        Student student = this.studentBean.getStudentByMatriculation(matriculation);
+        List<Teacher> teacherList = this.teacherBean.getTeacherByStudent(student);
+        List<TeacherDTO> teacherDTOList = (List<TeacherDTO>) new LinkedList();
+        for (Teacher t:
+                teacherList) {
+            teacherDTOList.add(DTOAssembler.getTeacherDTO(t));
+        }
+        return teacherDTOList;
     }
 }
