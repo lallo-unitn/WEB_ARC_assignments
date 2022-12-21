@@ -1,5 +1,6 @@
 package it.unitn.disi.web.rg209272.assignment4_tomcat.business_delegate;
 
+import it.unitn.disi.web.rg209272.assignment4_tomcat.auxiliary.JndiName;
 import it.unitn.disi.web.rg209272.assignment4_tomcat.serviceLocator.RemoteServiceInitializer;
 import it.unitn.disi.web.rg209272.assignment4_wildfly.DTOs.StudentDTO;
 import it.unitn.disi.web.rg209272.assignment4_wildfly.DTOs.TeacherDTO;
@@ -12,8 +13,8 @@ public class AdvisorChoiceManagerBD {
     private static AdvisorChoiceManagerBD instance;
 
     private AdvisorChoiceManagerBD(){
-        this.advisorChoiceManagerFacade = RemoteServiceInitializer.getInstance().getAdvisorChoiceManagerFacade();
-    };
+        this.advisorChoiceManagerFacade = (AdvisorChoiceManagerFacade) RemoteServiceInitializer.getInstance().getService(JndiName.ADVISOR);
+    }
 
     public static AdvisorChoiceManagerBD getInstance() {
         if (instance == null) {

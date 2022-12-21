@@ -40,7 +40,13 @@ public class StudentManagerBean implements StudentManagerFacade {
     public List<EnrollmentDTO> getStudentCourses(int matriculation) {
         logger.info("Retrieving student [ " + matriculation + " ] enrollments");
         Student student = this.studentBean.getStudentByMatriculation(matriculation);
+        if(student == null){
+            return null;
+        }
         List<Enrollment> enrollmentList = this.enrollmentBean.getEnrollmentByStudent(student);
+        if(enrollmentList == null || enrollmentList.isEmpty()){
+            return null;
+        }
         List<EnrollmentDTO> enrollmentDTOList = (List<EnrollmentDTO>) new LinkedList();
         for (Enrollment e:
                 enrollmentList) {

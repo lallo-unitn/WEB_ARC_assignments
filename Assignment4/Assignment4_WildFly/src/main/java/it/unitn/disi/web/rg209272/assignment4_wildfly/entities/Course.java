@@ -13,7 +13,6 @@ public class Course {
     public Course() {
     }
 
-
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "NAME")
     private Teacher teacher;

@@ -13,6 +13,7 @@ import it.unitn.disi.web.rg209272.assignment4_wildfly.entities.Teacher;
 import org.jboss.logging.Logger;
 
 import javax.ejb.*;
+import javax.persistence.NoResultException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -38,14 +39,26 @@ public class AdvisorChoiceManagerBean implements AdvisorChoiceManagerFacade {
 
     @Override
     public List<TeacherDTO> getTeacherByStudent(int matriculation) {
-        logger.info("Retrieving student [ " + matriculation + " ] teachers");
-        Student student = this.studentBean.getStudentByMatriculation(matriculation);
-        List<Teacher> teacherList = this.teacherBean.getTeacherByStudent(student);
+        Student student = this.getStudentAux(matriculation);
+        List<Teacher> teacherList = null;
+        if(student == null){
+            return null;
+        }
+        teacherList = this.teacherBean.getTeacherByStudent(student);
+        if(teacherList == null || teacherList.isEmpty()){
+            return null;
+        }
         List<TeacherDTO> teacherDTOList = (List<TeacherDTO>) new LinkedList();
         for (Teacher t:
                 teacherList) {
             teacherDTOList.add(DTOAssembler.getTeacherDTO(t));
         }
         return teacherDTOList;
+    }
+
+    private Student getStudentAux(int matriculation){
+        Student student = null;
+        student = this.studentBean.getStudentByMatriculation(matriculation);
+        return student;
     }
 }

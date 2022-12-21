@@ -12,6 +12,7 @@
            name="matriculation">
     <input type="submit" value="Submit">
 </form>
+<%= request.getAttribute("messageStudent")%>
 <br>
 <hr>
 <h2>Advisor Choice Page</h2>
@@ -21,5 +22,6 @@
            name="matriculation">
     <input type="submit" value="Submit">
 </form>
+<%= request.getAttribute("messageAdvisor")%>
 </body>
 </html>

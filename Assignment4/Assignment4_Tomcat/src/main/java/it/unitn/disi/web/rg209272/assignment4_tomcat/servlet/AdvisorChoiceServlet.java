@@ -1,11 +1,8 @@
 package it.unitn.disi.web.rg209272.assignment4_tomcat.servlet;
 
 import it.unitn.disi.web.rg209272.assignment4_tomcat.business_delegate.AdvisorChoiceManagerBD;
-import it.unitn.disi.web.rg209272.assignment4_tomcat.business_delegate.StudentManagerBD;
-import it.unitn.disi.web.rg209272.assignment4_tomcat.serviceLocator.RemoteServiceInitializer;
 import it.unitn.disi.web.rg209272.assignment4_wildfly.DTOs.StudentDTO;
 import it.unitn.disi.web.rg209272.assignment4_wildfly.DTOs.TeacherDTO;
-import it.unitn.disi.web.rg209272.assignment4_wildfly.facade.StudentManagerFacade;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -21,8 +18,15 @@ public class AdvisorChoiceServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int matriculation = Integer.parseInt(request.getParameter("matriculation"));
+        request.setAttribute("messageStudent", "");
+        request.setAttribute("messageAdvisor", "");
         AdvisorChoiceManagerBD acmbd = AdvisorChoiceManagerBD.getInstance();
         StudentDTO studentDTO = acmbd.getStudent(matriculation);
+        if(studentDTO == null){
+            request.setAttribute("messageAdvisor", "Matriculation is not registered");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+            return;
+        }
         request.setAttribute("studentDTO", studentDTO);
         List<TeacherDTO> teacherDTOList = acmbd.getTeacherByStudent(matriculation);
         request.setAttribute("teacherDTOList", teacherDTOList);

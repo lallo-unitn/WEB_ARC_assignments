@@ -1,6 +1,8 @@
 package it.unitn.disi.web.rg209272.assignment4_tomcat.serviceLocator;
 
+import it.unitn.disi.web.rg209272.assignment4_wildfly.auxiliary.Service;
 import it.unitn.disi.web.rg209272.assignment4_wildfly.facade.AdvisorChoiceManagerFacade;
+import it.unitn.disi.web.rg209272.assignment4_tomcat.auxiliary.JndiName;
 import it.unitn.disi.web.rg209272.assignment4_wildfly.facade.StudentManagerFacade;
 
 import javax.naming.Context;
@@ -15,12 +17,7 @@ public class RemoteServiceInitializer {
     private StudentManagerFacade studentManagerFacade;
     private AdvisorChoiceManagerFacade advisorChoiceManagerFacade;
 
-    private static HashMap<String, StudentManagerFacade> cacheStudent;
-    private static HashMap<String, AdvisorChoiceManagerFacade> cacheAdvisor;
-    static {
-        cacheStudent = new HashMap<String, StudentManagerFacade> ();
-        cacheAdvisor = new HashMap<String, AdvisorChoiceManagerFacade> ();
-    }
+    private static HashMap<String, Service> cache = new HashMap<>();
 
     private RemoteServiceInitializer() {
         this.ctx = createInitialContext();
@@ -50,35 +47,16 @@ public class RemoteServiceInitializer {
         }
     }
 
-    public synchronized StudentManagerFacade getStudentManagerFacade() {
-        String jndiName = "ejb:/Assignment4_WildFly-1.0-SNAPSHOT/StudentManagerBean!" +
-                "it.unitn.disi.web.rg209272.assignment4_wildfly.facade.StudentManagerFacade";
-        this.studentManagerFacade = cacheStudent.get(jndiName);
-        if (this.studentManagerFacade == null) {
+    public synchronized Service getService(JndiName jndiName) {
+        String jndiRaw = jndiName.getJndiName();
+        if(!cache.containsKey(jndiRaw)) {
             try {
-                this.studentManagerFacade = (StudentManagerFacade) ctx.lookup(jndiName);
-                cacheStudent.put(jndiName, this.studentManagerFacade);
+                Service service  = (Service) ctx.lookup(jndiRaw);
+                cache.put(jndiRaw, service);
             } catch (NamingException e) {
                 e.printStackTrace();
-                this.studentManagerFacade = null;
             }
         }
-        return this.studentManagerFacade;
-    }
-
-    public synchronized AdvisorChoiceManagerFacade getAdvisorChoiceManagerFacade() {
-        String jndiName = "ejb:/Assignment4_WildFly-1.0-SNAPSHOT/AdvisorChoiceManagerBean!" +
-                "it.unitn.disi.web.rg209272.assignment4_wildfly.facade.AdvisorChoiceManagerFacade";
-        this.advisorChoiceManagerFacade = cacheAdvisor.get(jndiName);
-        if (this.advisorChoiceManagerFacade == null) {
-            try {
-                this.advisorChoiceManagerFacade = (AdvisorChoiceManagerFacade) ctx.lookup(jndiName);
-                cacheAdvisor.put(jndiName, this.advisorChoiceManagerFacade);
-            } catch (NamingException e) {
-                e.printStackTrace();
-                this.advisorChoiceManagerFacade = null;
-            }
-        }
-        return this.advisorChoiceManagerFacade;
+        return cache.get(jndiRaw);
     }
 }

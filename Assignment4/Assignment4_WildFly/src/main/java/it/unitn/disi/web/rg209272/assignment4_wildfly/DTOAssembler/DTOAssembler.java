@@ -10,24 +10,36 @@ import it.unitn.disi.web.rg209272.assignment4_wildfly.entities.Teacher;
 public class DTOAssembler {
     public static EnrollmentDTO getEnrollmentDTO(Enrollment enrollment) {
         EnrollmentDTO dto = new EnrollmentDTO();
-        dto.setCourseName(enrollment.getCourseName().getName());
-        dto.setStMatriculation(enrollment.getStMatriculation().getId());
-        dto.setGrade(enrollment.getGrade());
+        try{
+            dto.setCourseName(enrollment.getCourseName().getName());
+            dto.setStMatriculation(enrollment.getStMatriculation().getId());
+            dto.setGrade(enrollment.getGrade());
+        }catch(NullPointerException n){
+            return null;
+        }
         return dto;
     }
 
     public static StudentDTO getStudentDTO(Student student) {
         StudentDTO dto = new StudentDTO();
-        dto.setId(student.getId());
-        dto.setName(student.getName());
-        dto.setSurname(student.getSurname());
+        try{
+            dto.setId(student.getId());
+            dto.setName(student.getName());
+            dto.setSurname(student.getSurname());
+        }catch(NullPointerException n){
+            return null;
+        }
         return dto;
     }
 
     public static TeacherDTO getTeacherDTO(Teacher teacher) {
         TeacherDTO dto = new TeacherDTO();
-        dto.setName(teacher.getName());
-        dto.setSurname(teacher.getId());
+        try{
+            dto.setName(teacher.getName());
+            dto.setSurname(teacher.getId());
+        }catch(NullPointerException n){
+            return null;
+        }
         return dto;
     }
 }
