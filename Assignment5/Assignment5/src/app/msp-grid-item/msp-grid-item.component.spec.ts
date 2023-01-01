@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ParliamentarianGridItemComponent } from './parliamentarian-grid-item.component';
+import { MspGridItemComponent } from './msp-grid-item.component';
 
 describe('ParliamentarianGridItemComponent', () => {
-  let component: ParliamentarianGridItemComponent;
-  let fixture: ComponentFixture<ParliamentarianGridItemComponent>;
+  let component: MspGridItemComponent;
+  let fixture: ComponentFixture<MspGridItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ParliamentarianGridItemComponent ]
+      declarations: [ MspGridItemComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ParliamentarianGridItemComponent);
+    fixture = TestBed.createComponent(MspGridItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

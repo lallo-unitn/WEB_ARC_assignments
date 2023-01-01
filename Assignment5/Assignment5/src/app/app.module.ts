@@ -4,21 +4,35 @@ import {AppComponent} from './app.component';
 import {RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
-import {ParliamentariansOverviewComponent} from "./parliamentarians-overview/parliamentarians-overview.component";
+import {MspListComponent} from "./msp-list/msp-list.component";
 import {appRoutes} from "./app.routes";
-import { ParliamentarianGridItemComponent } from './parliamentarian-grid-item/parliamentarian-grid-item.component';
+import { MspGridItemComponent } from './msp-grid-item/msp-grid-item.component';
+import { MspDetailsComponent } from './msp-details/msp-details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from "@angular/material/card";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+import {MatRippleModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ParliamentariansOverviewComponent,
-    ParliamentarianGridItemComponent,
+    MspListComponent,
+    MspGridItemComponent,
+    MspDetailsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    MatCardModule,
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatRippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

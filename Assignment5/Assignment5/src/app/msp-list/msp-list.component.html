@@ -1,0 +1,17 @@
+<mat-card id="list-card">
+  <mat-card-header>
+    <mat-card-title>Members of the Scottish Parliament</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="container">
+      <div class="grid-container">
+        <app-parliamentarian-grid-item class="grid-item"
+                                       [parliamentarian]="parliamentarian"
+                                       *ngFor="let parliamentarian of parliamentarians">
+        </app-parliamentarian-grid-item>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+

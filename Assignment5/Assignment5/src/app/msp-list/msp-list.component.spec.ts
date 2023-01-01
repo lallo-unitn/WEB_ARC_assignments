@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ParliamentariansOverviewComponent } from './parliamentarians-overview.component';
+import { MspListComponent } from './msp-list.component';
 
 describe('ParliamentariansOverviewComponent', () => {
-  let component: ParliamentariansOverviewComponent;
-  let fixture: ComponentFixture<ParliamentariansOverviewComponent>;
+  let component: MspListComponent;
+  let fixture: ComponentFixture<MspListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ParliamentariansOverviewComponent ]
+      declarations: [ MspListComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ParliamentariansOverviewComponent);
+    fixture = TestBed.createComponent(MspListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

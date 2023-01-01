@@ -1,4 +1,4 @@
-export interface ParliamentarianEntry {
+export interface MspEntry {
   readonly PersonID: number;
   readonly PhotoURL?: string;
   readonly Notes: string;

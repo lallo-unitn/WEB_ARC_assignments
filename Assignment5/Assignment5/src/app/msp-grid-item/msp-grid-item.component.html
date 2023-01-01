@@ -1,0 +1,14 @@
+<div class="grid-item">
+  <mat-card (click)="onItemClick()" matRipple class="clickable">
+    <mat-card-header>
+      <mat-card-title id="parliamentary-name">{{ parliamentarian.ParliamentaryName }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content id="parliamentary-image">
+      <img class="card-image"
+           src="{{getImage()}}"
+           alt="parliamentarian image">
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
