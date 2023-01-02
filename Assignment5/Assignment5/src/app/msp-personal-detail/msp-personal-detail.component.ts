@@ -1,16 +1,17 @@
 import {Component, Input} from '@angular/core';
 import {MspEntry} from "../entries/msp.entry";
-import {Router} from "@angular/router";
+import {formatDate} from "@angular/common";
 
 @Component({
-  selector: 'app-parliamentarian-grid-item',
-  templateUrl: './msp-grid-item.component.html',
-  styleUrls: ['./msp-grid-item.component.css']
+  selector: 'app-msp-personal-detail',
+  templateUrl: './msp-personal-detail.component.html',
+  styleUrls: ['./msp-personal-detail.component.css']
 })
-export class MspGridItemComponent {
+export class MspPersonalDetailComponent {
+
   @Input() mspEntry!: MspEntry;
 
-  constructor(private router: Router) {
+  constructor() {
   }
 
   getImage(): string {
@@ -23,9 +24,7 @@ export class MspGridItemComponent {
     }
   }
 
-  onItemClick(): void {
-    this.router.navigate(['/msp-details', this.mspEntry.PersonID]);
-    console.log("Redirected to msp " + this.mspEntry.PersonID);
+  getBirthDate(): string {
+    return formatDate(this.mspEntry.BirthDate, 'MMM dd, yyyy', 'en-US');
   }
-
 }

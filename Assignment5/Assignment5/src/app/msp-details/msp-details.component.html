@@ -1,11 +1,3 @@
-<div class="grid-item">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Card Title</mat-card-title>
-      <mat-card-subtitle>Card Subtitle</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      {{personID}}
-    </mat-card-content>
-  </mat-card>
-</div>
+<app-msp-personal-detail [mspEntry]="mspEntry"></app-msp-personal-detail>
+<app-msp-parties-details [partyEntry]="partyEntry" *ngFor="let partyEntry of partyEntries">
+</app-msp-parties-details>

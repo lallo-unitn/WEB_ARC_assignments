@@ -14,6 +14,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatRippleModule} from "@angular/material/core";
+import { MspPersonalDetailComponent } from './msp-personal-detail/msp-personal-detail.component';
+import { MspPartiesDetailsComponent } from './msp-parties-details/msp-parties-details.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import {MatRippleModule} from "@angular/material/core";
     MspListComponent,
     MspGridItemComponent,
     MspDetailsComponent,
+    MspPersonalDetailComponent,
+    MspPartiesDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,40 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 0;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image{
+  max-width: 300px;
+  max-height: 200px;
+  aspect-ratio: auto;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#personal-details{
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 0;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#personal-details-content{
+  display: flex;
+}
+
+#personal-details-list{
+  text-align: left;
+}

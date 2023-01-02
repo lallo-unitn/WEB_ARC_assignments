@@ -16,7 +16,14 @@ export class MspListComponent implements OnInit {
 
   ngOnInit(): void {
     this.mspService.getMspEntries().subscribe(data => {
-      this.mspEntries = data;
+      let dataEntries: MspEntry[] = [];
+      for (let entry of data) {
+        if (entry.IsCurrent) {
+          dataEntries.push(entry);
+        }
+      }
+      this.mspEntries = dataEntries;
+      this.mspEntries.sort((a, b) => a.ParliamentaryName.localeCompare(b.ParliamentaryName));
     });
   }
 
