@@ -8,15 +8,15 @@ import {Router} from "@angular/router";
   styleUrls: ['./msp-grid-item.component.css']
 })
 export class MspGridItemComponent {
-  @Input() parliamentarian!: MspEntry;
+  @Input() msp!: MspEntry;
 
   constructor(private router: Router) {
   }
 
   getImage(): string {
-    if (this.parliamentarian.PhotoURL !== "" && this.parliamentarian.PhotoURL !== null) {
-      return <string>this.parliamentarian.PhotoURL;
-    } else if (this.parliamentarian.GenderTypeID === 2) {
+    if (this.msp.PhotoURL !== "" && this.msp.PhotoURL !== null) {
+      return <string>this.msp.PhotoURL;
+    } else if (this.msp.GenderTypeID === 2) {
       return "/assets/image/male.svg";
     } else {
       return "/assets/image/female.svg";
@@ -24,7 +24,8 @@ export class MspGridItemComponent {
   }
 
   onItemClick(): void {
-    this.router.navigate(['/parliamentarian-details']);
+    this.router.navigate(['/msp-details', this.msp.PersonID]);
+    console.log("Redirected to msp " + this.msp.PersonID);
   }
 
 }

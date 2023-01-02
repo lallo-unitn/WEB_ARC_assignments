@@ -9,14 +9,14 @@ import {MspEntry} from "../entries/msp.entry";
 })
 export class MspListComponent implements OnInit {
 
-  public parliamentarians!: MspEntry[];
+  public mspEntries!: MspEntry[];
 
-  constructor(private parliamentarianService: MspService) {
+  constructor(private mspService: MspService) {
   }
 
   ngOnInit(): void {
-    this.parliamentarianService.getParliamentarians().subscribe(data => {
-      this.parliamentarians = data;
+    this.mspService.getMspEntries().subscribe(data => {
+      this.mspEntries = data;
     });
   }
 
