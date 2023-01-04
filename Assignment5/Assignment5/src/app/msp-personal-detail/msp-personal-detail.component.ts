@@ -14,7 +14,7 @@ export class MspPersonalDetailComponent {
   constructor() {
   }
 
-  getImage(): string {
+  getMspImage(): string {
     if (this.mspEntry.PhotoURL !== "" && this.mspEntry.PhotoURL !== null) {
       return <string>this.mspEntry.PhotoURL;
     } else if (this.mspEntry.GenderTypeID === 2) {
@@ -25,6 +25,6 @@ export class MspPersonalDetailComponent {
   }
 
   getBirthDate(): string {
-    return formatDate(this.mspEntry.BirthDate, 'MMM dd, yyyy', 'en-US');
+    return formatDate(this.mspEntry.BirthDate, 'MMM dd, yyyy', 'en-UK');
   }
 }

@@ -1,0 +1,48 @@
+#details-wrapper{
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+#msp-detail-flexbox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+#msp-personal-detail-card, #msp-website-details-card, #msp-parties-details-card {
+  aspect-ratio: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 10px;
+  text-align: center;
+}
+
+.card-image {
+  max-width: 300px;
+  max-height: 200px;
+  aspect-ratio: auto;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#personal-details, #websites-details, #parties-details {
+  background-color: rgba(255, 255, 255, 0.8);
+  aspect-ratio: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#personal-details-content {
+  display: flex;
+}
+
+#personal-details-list {
+  text-align: left;
+}
+
+
+

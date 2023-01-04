@@ -16,6 +16,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatRippleModule} from "@angular/material/core";
 import { MspPersonalDetailComponent } from './msp-personal-detail/msp-personal-detail.component';
 import { MspPartiesDetailsComponent } from './msp-parties-details/msp-parties-details.component';
+import { MspWebsiteDetailsComponent } from './msp-website-details/msp-website-details.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MspPartiesDetailsComponent } from './msp-parties-details/msp-parties-de
     MspDetailsComponent,
     MspPersonalDetailComponent,
     MspPartiesDetailsComponent,
+    MspWebsiteDetailsComponent,
   ],
   imports: [
     BrowserModule,

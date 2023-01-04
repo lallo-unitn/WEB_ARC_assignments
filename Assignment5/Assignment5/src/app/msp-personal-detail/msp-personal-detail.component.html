@@ -1,19 +1,15 @@
-<div class="wrapper">
-  <mat-card id="personal-details">
-    <mat-card-header>
-      <mat-card-title>{{ mspEntry.ParliamentaryName }}</mat-card-title>
-      <mat-card-subtitle>Personal Details</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content id="personal-details-content">
-      <img class="card-image"
-           src="{{getImage()}}"
-           alt="parliamentarian image">
-      <ul id="personal-details-list">
-        <li><span class="card-content-title">MSP ID:</span> {{ mspEntry.PersonID }}</li>
-        <li><span class="card-content-title">Date of birth:</span> {{ getBirthDate() }}</li>
-      </ul>
-    </mat-card-content>
-  </mat-card>
-</div>
-
-
+<mat-card id="personal-details">
+  <mat-card-header>
+    <mat-card-title>{{ mspEntry.ParliamentaryName }}</mat-card-title>
+    <mat-card-subtitle>Personal Details</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content id="personal-details-content">
+    <img class="card-image"
+         src="{{getMspImage()}}"
+         alt="parliamentarian image">
+    <ul id="personal-details-list">
+      <li><span class="card-content-title">MSP ID:</span> {{ mspEntry.PersonID }}</li>
+      <li *ngIf="(mspEntry.BirthDate !== null)"><span class="card-content-title">Date of birth:</span> {{ getBirthDate() }}</li>
+    </ul>
+  </mat-card-content>
+</mat-card>

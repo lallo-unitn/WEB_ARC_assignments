@@ -1,3 +1,29 @@
-<app-msp-personal-detail [mspEntry]="mspEntry"></app-msp-personal-detail>
-<app-msp-parties-details [partyEntry]="partyEntry" *ngFor="let partyEntry of partyEntries">
-</app-msp-parties-details>
+<div id="details-wrapper">
+  <app-msp-personal-detail id="msp-personal-detail-card"
+                           [mspEntry]="mspEntry">
+  </app-msp-personal-detail>
+
+  <mat-card id="msp-parties-details-card">
+    <mat-card-header>
+      <mat-card-title>Parties</mat-card-title>
+    </mat-card-header>
+    <mat-card-content id="parties-details-content">
+      <app-msp-parties-details id="parties-details"
+                               [partyEntry]="partyEntry"
+                               *ngFor="let partyEntry of partyEntries">
+      </app-msp-parties-details>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card id="msp-website-details-card" class="details">
+    <mat-card-header>
+      <mat-card-title>Websites</mat-card-title>
+    </mat-card-header>
+    <mat-card-content id="websites-details-content">
+      <app-msp-website-details id="website-details"
+                               [mspWebsite]="mspWebsite"
+                               *ngFor="let mspWebsite of mspWebsites">
+      </app-msp-website-details>
+    </mat-card-content>
+  </mat-card>
+</div>
