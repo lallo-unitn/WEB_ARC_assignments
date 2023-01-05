@@ -36,7 +36,6 @@ export class MspDetailsComponent implements OnInit, OnDestroy {
     try {
       this.getInfo();
     }catch (e: any) {
-      console.log("zsfdxgchvjbknlòjblhvgcjfxhdzgsxhfcjln");
       this.router.navigate(['/list']);
     }
   }

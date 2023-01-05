@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MspService} from "../services/msp.service";
 import {MspEntry} from "../entries/msp.entry";
+import {MatSlideToggleChange} from "@angular/material/slide-toggle";
 
 @Component({
   selector: 'app-parliamentarians-overview',
@@ -8,7 +9,7 @@ import {MspEntry} from "../entries/msp.entry";
   styleUrls: ['./msp-list.component.css']
 })
 export class MspListComponent implements OnInit {
-
+  public isPreviousMSPsChecked: boolean = false;
   public mspEntries!: MspEntry[];
 
   constructor(private mspService: MspService) {
@@ -18,7 +19,7 @@ export class MspListComponent implements OnInit {
     this.mspService.getMspEntries().subscribe(data => {
       let dataEntries: MspEntry[] = [];
       for (let entry of data) {
-        if (entry.IsCurrent) {
+        if (entry.IsCurrent || this.isPreviousMSPsChecked) { // If the checkbox is checked, we want to show all MSPs
           dataEntries.push(entry);
         }
       }
@@ -27,4 +28,8 @@ export class MspListComponent implements OnInit {
     });
   }
 
+  reload($event: MatSlideToggleChange) {
+    this.isPreviousMSPsChecked = $event.checked;
+    this.ngOnInit();
+  }
 }

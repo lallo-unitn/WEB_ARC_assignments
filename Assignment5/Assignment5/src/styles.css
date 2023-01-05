@@ -29,5 +29,21 @@ a{
   color: #b884cb;
 }
 
+.flexExpand{
+  flex: 1 1 auto;
+}
 
+.mat-mdc-slide-toggle.mat-accent {
+  --mdc-switch-selected-focus-state-layer-color: #d0a6ea;
+  --mdc-switch-selected-handle-color: #d0a6ea;
+  --mdc-switch-selected-hover-state-layer-color: #d0a6ea;
+  --mdc-switch-selected-pressed-state-layer-color: #c2a8da;
+  --mdc-switch-selected-focus-handle-color: #d0a6ea;
+  --mdc-switch-selected-hover-handle-color: #d0a6ea;
+  --mdc-switch-selected-pressed-handle-color: #d0a6ea;
+  --mdc-switch-selected-focus-track-color: #aa4dc5;
+  --mdc-switch-selected-hover-track-color: #aa4dc5;
+  --mdc-switch-selected-pressed-track-color: #aa4dc5;
+  --mdc-switch-selected-track-color: #aa4dc5;
+}
 
