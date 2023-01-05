@@ -17,6 +17,7 @@ import {MatRippleModule} from "@angular/material/core";
 import { MspPersonalDetailComponent } from './msp-personal-detail/msp-personal-detail.component';
 import { MspPartiesDetailsComponent } from './msp-parties-details/msp-parties-details.component';
 import { MspWebsiteDetailsComponent } from './msp-website-details/msp-website-details.component';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 @NgModule({
   declarations: [
@@ -28,18 +29,19 @@ import { MspWebsiteDetailsComponent } from './msp-website-details/msp-website-de
     MspPartiesDetailsComponent,
     MspWebsiteDetailsComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    MatCardModule,
-    RouterModule.forRoot(appRoutes),
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatRippleModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        MatCardModule,
+        RouterModule.forRoot(appRoutes),
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatRippleModule,
+        MatSlideToggleModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

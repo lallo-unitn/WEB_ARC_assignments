@@ -1,27 +1,22 @@
-.container{
-  max-width: 95vw;
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 2%;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  padding: 10px;
-}
-
 .grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
   border: 0;
-  padding: 20px;
+  padding: 4%;
   text-align: center;
   display: flex;
   flex-direction: column;
 }
 
 .card-image{
-  max-width: 300px;
-  height: 200px;
+  max-width: 100%;
   aspect-ratio: auto;
   text-align: center;
   background-repeat: no-repeat;
@@ -29,10 +24,15 @@
 }
 
 #list-card{
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: black;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   border: 0;
   padding: 20px;
   text-align: center;
   display: flex;
   flex-direction: column;
+}
+
+#list-card-title{
+  font-size: 24px;
 }

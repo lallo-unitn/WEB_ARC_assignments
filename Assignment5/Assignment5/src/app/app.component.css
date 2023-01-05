@@ -1,7 +1,27 @@
-.logo{
-  max-height: 60px;
+#toolbar {
+  background-color: black;
+  font-size: 1.2em;
+  height: 12%;
+}
+
+#list-wrapper {
+  margin: 3% 5%;
+}
+
+.logo {
+  height: 100%;
   aspect-ratio: auto;
 }
+
+#prev-msp-switch {
+  text-align: right;
+  margin-right: 20px;
+}
+
+.flexExpand {
+  flex: 1 1 auto;
+}
+
 /*
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that

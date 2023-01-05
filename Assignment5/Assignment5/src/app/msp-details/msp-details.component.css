@@ -1,4 +1,4 @@
-#details-wrapper{
+#details-wrapper {
   margin-left: 25%;
   margin-right: 25%;
 }
@@ -14,9 +14,12 @@
 
 #msp-personal-detail-card, #msp-website-details-card, #msp-parties-details-card {
   aspect-ratio: auto;
-  background-color: rgba(255, 255, 255, 0.8);
   border: 10px;
   text-align: center;
+}
+
+#msp-website-details-card, #msp-parties-details-card {
+  margin-bottom: 3%;
 }
 
 .card-image {
@@ -29,7 +32,6 @@
 }
 
 #personal-details, #websites-details, #parties-details {
-  background-color: rgba(255, 255, 255, 0.8);
   aspect-ratio: auto;
   text-align: center;
   display: flex;
