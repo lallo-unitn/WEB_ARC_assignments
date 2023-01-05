@@ -4,6 +4,10 @@
   height: 12%;
 }
 
+.mat-toolbar-row {
+  height: 90% !important;
+}
+
 #list-wrapper {
   margin: 3% 5%;
 }
