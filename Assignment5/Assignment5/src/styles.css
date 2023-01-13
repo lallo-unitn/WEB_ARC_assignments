@@ -21,6 +21,10 @@ a{
   color: #b884cb;
 }
 
+hr{
+  border: 1px solid rgba(131, 131, 131, 0.25);
+}
+
 .mat-mdc-card {
   --mdc-elevated-card-container-color: black;
 }

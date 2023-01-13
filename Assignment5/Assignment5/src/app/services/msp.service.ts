@@ -9,11 +9,17 @@ import {WebsiteEntity} from "../entries/website.entity";
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * @classdesc This class contains the service methods for the MSP application.
+ */
 export class MspService {
 
   constructor(private httpClient: HttpClient) {
   }
 
+  /**
+   * @returns The observable of the array of MSP entries
+   */
   public getMspEntries(): Observable<MspEntry[]> {
     const url = 'https://data.parliament.scot/api/members';
     let mspEntryArray$: Observable<MspEntry[]>;
@@ -21,6 +27,11 @@ export class MspService {
     return mspEntryArray$;
   }
 
+  /**
+   * @param {number} id  is the id of the MSP entry
+   * @returns The observable of the MspEntry with requested id
+   * @throws {Error} if id is not present
+   */
   public getMspEntry(id: number): Observable<MspEntry> {
     const url = 'https://data.parliament.scot/api/members/' + id;
     let mspEntry$: Observable<MspEntry>;
@@ -33,6 +44,9 @@ export class MspService {
     );
   }
 
+  /**
+   * @returns The observable of the array of MSP - party relation entries
+   */
   public getMspPartyEntries(): Observable<MspPartyEntry[]> {
     const url = 'https://data.parliament.scot/api/memberparties';
     let mspPartyEntryArray$: Observable<MspPartyEntry[]>;
@@ -40,6 +54,9 @@ export class MspService {
     return mspPartyEntryArray$;
   }
 
+  /**
+   * @returns The observable of the array of party entries
+   */
   public getPartyEntries(): Observable<PartyEntry[]> {
     const url = 'https://data.parliament.scot/api/parties/';
     let partyEntries$: Observable<PartyEntry[]>;
@@ -47,6 +64,9 @@ export class MspService {
     return partyEntries$;
   }
 
+  /**
+   * @returns The observable of the array of website entries
+   */
   public getWebsiteEntries(): Observable<WebsiteEntity[]> {
     const url = 'https://data.parliament.scot/api/websites/';
     let websiteEntries$: Observable<WebsiteEntity[]>;
