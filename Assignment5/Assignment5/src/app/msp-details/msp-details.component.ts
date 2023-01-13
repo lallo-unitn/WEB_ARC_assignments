@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
-import {catchError, EMPTY, map, mergeMap, Observable, Subscription, switchMap} from "rxjs";
+import {catchError, EMPTY, map, mergeMap, Subscription, switchMap} from "rxjs";
 import {MspEntry} from "../entries/msp.entry";
 import {MspService} from "../services/msp.service";
 import {MspPartyEntry} from "../entries/msp.party.entry";
@@ -32,10 +32,13 @@ export class MspDetailsComponent implements OnInit, OnDestroy {
   ) {
   }
 
+  /**
+   * This function is called when the component is initialized. If error is caught, redirect to list.
+   */
   ngOnInit(): void {
     try {
       this.getInfo();
-    }catch (e: any) {
+    } catch (e: any) {
       this.router.navigate(['/list']);
     }
   }
@@ -48,7 +51,19 @@ export class MspDetailsComponent implements OnInit, OnDestroy {
     this.mspWebsiteSub?.unsubscribe();
   }
 
+  onBackClick(): void {
+    this.router.navigate(['/list']);
+  }
+
+  /**
+   * This function is called when the component is initialized.
+   * It subscribes to the params observable and gets the personID from the params and use pipe to get
+   * the mspEntry, mspPartyEntries, partyEntries and mspWebsites.
+   * {@link partyEntries} and {@link mspWebsites} are used to display the party name and the websites of the MSP in child components.
+   * @private
+   */
   private getInfo(): void {
+    // Get the personID from the params and use pipe to get the mspEntry, mspPartyEntries, partyEntries and mspWebsites.
     this.route.params.pipe(
       // mergeMap is like switchMap, but it waits for the previous observable to complete before starting the next one
       mergeMap((val: Params) => {
@@ -92,10 +107,6 @@ export class MspDetailsComponent implements OnInit, OnDestroy {
       })
     ).subscribe(() => {
     });
-  }
-
-  onBackClick(): void {
-    this.router.navigate(['/list']);
   }
 
 }

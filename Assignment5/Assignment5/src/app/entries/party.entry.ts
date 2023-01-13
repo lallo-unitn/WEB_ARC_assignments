@@ -1,3 +1,8 @@
+/**
+ * Interface that represent a party of the parliament.
+ *
+ * @interface PartyEntry
+ */
 export interface PartyEntry {
   readonly ID: number;
   readonly Abbreviation: string;

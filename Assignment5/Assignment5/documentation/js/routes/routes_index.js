@@ -1,0 +1,1 @@
+var ROUTES_INDEX = {"name":"<root>","kind":"module","className":"AppModule","children":[{"kind":"component","component":"MspListComponent","path":"list"},{"kind":"component","component":"MspDetailsComponent","path":"msp-details/:personID"}]}

@@ -3,7 +3,7 @@ import {MspEntry} from "../entries/msp.entry";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-parliamentarian-grid-item',
+  selector: 'app-msp-grid-item',
   templateUrl: './msp-grid-item.component.html',
   styleUrls: ['./msp-grid-item.component.css']
 })
@@ -13,13 +13,21 @@ export class MspGridItemComponent {
   constructor(private router: Router) {
   }
 
+  /**
+   * This method is used to get the PhotoURL of the MSP.
+   * If the PhotoURL is null, it returns a default image: the gender of the avatar is determined by
+   * attribute GenderTypeId of the {@link mspEntry} given in component input.
+   */
   getImage(): string {
-    if (this.mspEntry.PhotoURL !== "" && this.mspEntry.PhotoURL !== null) {
+    if (
+      this.mspEntry.PhotoURL !== "" &&
+      this.mspEntry.PhotoURL !== null &&
+      this.mspEntry.PhotoURL !== undefined) {
       return <string>this.mspEntry.PhotoURL;
     } else if (this.mspEntry.GenderTypeID === 2) {
-      return "/assets/image/male.svg";
+      return "assets/image/male.png";
     } else {
-      return "/assets/image/female.svg";
+      return "assets/image/female.png";
     }
   }
 

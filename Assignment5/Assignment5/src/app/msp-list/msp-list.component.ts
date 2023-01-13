@@ -15,6 +15,10 @@ export class MspListComponent implements OnInit {
   constructor(private mspService: MspService) {
   }
 
+  /**
+   * Fill the mspEntries array with the MSP entries. Depending on the value of {@link isPreviousMSPsChecked},
+   * the MSP entries are filtered to only contain current MSPs or all MSPs.
+   */
   ngOnInit(): void {
     this.mspService.getMspEntries().subscribe(data => {
       let dataEntries: MspEntry[] = [];
@@ -28,6 +32,10 @@ export class MspListComponent implements OnInit {
     });
   }
 
+  /**
+   * @description This method is called when the checkbox is toggled. It updates the value of {@link isPreviousMSPsChecked} and
+   * @param $event The event that is triggered when the checkbox is toggled
+   */
   reload($event: MatSlideToggleChange) {
     this.isPreviousMSPsChecked = $event.checked;
     this.ngOnInit();

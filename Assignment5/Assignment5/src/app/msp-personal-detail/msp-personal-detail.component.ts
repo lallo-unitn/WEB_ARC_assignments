@@ -13,14 +13,18 @@ export class MspPersonalDetailComponent {
 
   constructor() {
   }
-
+  /**
+   * This method is used to get the PhotoURL of the MSP.
+   * If the PhotoURL is null, it returns a default image: the gender of the avatar is determined by
+   * attribute GenderTypeId of the {@link mspEntry} given in component input.
+   */
   getMspImage(): string {
     if (this.mspEntry.PhotoURL !== "" && this.mspEntry.PhotoURL !== null) {
       return <string>this.mspEntry.PhotoURL;
     } else if (this.mspEntry.GenderTypeID === 2) {
-      return "/assets/image/male.svg";
+      return "assets/image/male.png";
     } else {
-      return "/assets/image/female.svg";
+      return "assets/image/female.png";
     }
   }
 
